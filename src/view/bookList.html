@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title id="JS_book_title">书单</title>
+    @@include('./public/head.html')
+</head>
+
+<body>
+    <!-- content -->
+    <div id="book-list">
+        <div class="header bg-white clearfix">
+            <div class="f-left rank" id="JS_sale">
+                <a href="javascript:;" class="gray">销量<i class="icon icon-g-top"></i><i class="icon icon-g-bottom"></i></a>
+            </div>
+            <div class="f-left rank" id="JS_rank_time">
+                <a href="javascript:;" class="gray" id="JS_show_time">上架时间 <i class="icon icon-g-top icon-g-bottom rank-long ts-5"></i></a>
+            </div>
+            <div id="JS_view" class="f-left view">
+                <i class="icon icon-view"></i>
+            </div>
+        </div>
+        <div class="time-warpper bg-white border-top border-bottom">
+            <div class="border-bottom padding-bottom-15 padding-lr-12 padding-top-15">
+                <div>
+                    <input type="text" id="JS_start_time" class="gray" placeholder="年/月/日"><span class="gray margin-left-10 margin-right-10">-</span><input type="text" id="JS_end_time"  class="gray" placeholder="年/月/日">
+                    <a href="javascript:;" id="JS_time_submit" class="time-confirm text-center red font-15">搜索</a>
+                </div>
+            </div>
+            <div class="border-bottom black-4 padding-bottom-15 padding-lr-12 padding-top-15 font-0">
+                <a href="javascript:;" class="time"><i class="icon icon-time-checked margin-right-4"></i>当天</a>
+                <a href="javascript:;" class="time margin-left-14"><i class="icon icon-time-checked margin-right-4"></i>近三天</a>
+                <a href="javascript:;" class="time margin-left-14"><i class="icon icon-time-checked margin-right-4"></i>近一周</a>
+                <a href="javascript:;" class="time margin-left-14"><i class="icon icon-time-checked margin-right-4"></i>近一个月</a>
+            </div>
+        </div>
+        <div id="JS_list" class="padding-8 w-row padding-bottom-0"></div>
+        <div id="JS_loading_more" class="w-loading-more"><span class="JS_loading"><i class="icon icon-loading margin-right-5"></i>加载更多</span><span class="JS_loaded disn">加载完毕</span></div>
+ 
+    </div>
+    <!-- /content --> 
+    <script type="text/javascript" src="/libs/requirejs/require.js" data-main="/script/entry"></script>
+    <script type="text/javascript" src="/script/bookList.js"></script>
+</body>
+
+</html>

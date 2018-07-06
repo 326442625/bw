@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>关联账号</title>
+    @@include('./public/head.html')
+</head>
+
+<body>
+    <!-- content -->
+    <div id="bw-account">
+        <div class="main-account">
+            <div class="title font-12 black-8">
+                主账号资料
+            </div>
+            <div class="border-bottom account-info bg-white">
+                <span>主账号</span>
+                <a href="javascript:;" class="f-right img-warpper">
+                    <img id="JS_user_img" src="/images/wait-load.jpg">
+                    <span class="margin-left-5" id="JS_master_name">&nbsp;</span>
+                </a>
+            </div>
+            <div class="bg-white shop-name">
+                <span>书店名称</span>
+                <span class="f-right" id="JS_shop_name"></span>
+            </div>
+        </div>
+        <div class="sub-account">
+            <div class="title font-12 black-8">
+                关联账号<span class="f-right"><span id="JS_binded">0</span>/<span id="JS_total_bind">0</span></span>
+            </div>
+            <div class="sub-content" id="JS_sub_list">
+ 
+            </div>
+        </div>
+        <div class="w-pop code-pop ts-5 bg-white" id="JS_pop">
+            <div>
+                <i class="icon icon-close close"></i>
+            </div>
+            <div class="header">
+                <i class="icon icon-account-link"></i>
+            </div>
+            <div class="content">
+                <p class="font-16 black margin-bottom-20">添加关联账号</p>
+                <div id="JS_code" class="code-warpper"></div>
+            </div>
+            <div class="footer black-6">出示二维码，扫一扫添加关联账号</div>
+        </div>
+        <a href="javascript:;" id="JS_add" class="red-botton margin-left-12">添加关联账号</a>
+    </div>
+    <!-- /content -->
+    <script type="text/javascript" src="/libs/requirejs/require.js" data-main="/script/entry"></script>
+    <script type="text/javascript" src="/script/account.js"></script>
+</body>
+
+</html>

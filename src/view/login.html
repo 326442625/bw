@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <title>登录</title>
+    @@include('./public/head.html')
+</head>
+
+<body>
+    <!-- content -->
+    <div id="login">
+        <div class="warpper text-center padding-lr-12">
+            <p class="login-title black">欢迎登录博文三通帐号</p>
+            <div class="input-warpper search-warpper">
+                <i class="icon icon-login-account"></i><input type="text" placeholder="请输入账号" autocomplete="off" class="JS_input" id="JS_account">
+            </div>
+            <div class="input-warpper search-warpper margin-top-15">
+                <i class="icon icon-login-pwd"></i><input type="password" placeholder="请输入密码" autocomplete="off" class="JS_input" id="JS_pwd">
+            </div>
+            <div class="margin-top-25">
+                <i class="icon icon-login-checked margin-right-5"></i><a href="/view/newsDetail.html?id=2"><span class="red font-12">同意博文三通平台服务协议</span></a>
+            </div>
+            <a href="javascript:;" class="login-btn margin-top-10" id="JS_login">登录</a>
+            <div class="footer margin-top-30">
+                <p class="black-6 margin-bottom-5">温馨提示</p>
+                <p class="black-b">主账号第一次可通过登录帐号绑定微信,</p>
+                <p class="black-b">子帐号请通过主帐号的会员中心扫码绑定。</p>
+            </div>
+            
+        </div>
+    </div>
+    <!-- /content -->
+    <script type="text/javascript" src="/libs/requirejs/require.js" data-main="/script/entry"></script>
+    <script type="text/javascript" src="/script/login.js"></script>
+</body>
+
+</html>

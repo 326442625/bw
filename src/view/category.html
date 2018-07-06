@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>书目分类</title>
+    @@include('./public/head.html')
+</head>
+
+<body>
+    <!-- content -->
+    <div id="category" class="disn">
+        <div class="con">
+            <aside>
+                <div class="menu-left scrollbar-none" id="sidebar">
+                    <ul id="JS_nav">
+                        
+                    </ul>
+                </div>
+            </aside>
+            <section id="JS_right" class="menu-right padding-all j-content">
+                <p id="JS_total" class="gray font-12"></p>
+                <ul id="JS_content" class="margin-top-10"></ul>
+            </section>
+        </div>
+    </div>
+    <!-- /content -->
+    <!-- footer -->
+    <footer id="bw-footer" class="w-row">
+        <a href="/" class="f-left">
+            <i class="icon icon-nav icon-nav-home"></i>
+            <p class="margin-top-2">首页</p>
+        </a>
+        <a href="/view/advancedSearch.html" class="f-left">
+            <i class="icon icon-nav icon-nav-search"></i>
+            <p class="margin-top-2">高级搜索</p>
+        </a>
+        <a href="#" class="f-left active">
+            <i class="icon icon-nav icon-nav-category"></i>
+            <p class="margin-top-2">书目分类</p>
+        </a>
+        <a href="/view/cart.html" class="f-left">
+            <i class="icon icon-nav icon-nav-cart"></i>
+            <p class="margin-top-2">购物车</p>
+        </a>
+        <a href="/view/user.html" class="f-left">
+            <i class="icon icon-nav icon-nav-user"></i>
+            <p class="margin-top-2">个人中心</p>
+        </a>
+    </footer>
+    <!-- /footer -->
+    <script type="text/javascript" src="/libs/requirejs/require.js" data-main="/script/entry"></script>
+    <script type="text/javascript" src="/script/category.js"></script>
+</body>
+
+</html>

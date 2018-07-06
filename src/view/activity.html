@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>活动详情</title>
+    @@include('./public/head.html')
+</head>
+
+<body>
+    <!-- content -->
+    <div id="activity" class="disn">
+        <div class="warpper bg-white">
+            <div id="JS_detail">
+
+            </div>
+            <div id="JS_check" class="red-packet disn">
+                <a href="javascript:;" class="white">查看我的红包</a>
+            </div>
+        </div>
+        <div id="prize" class="bg-white disn">
+            <div class="title white">获奖名单</div>
+            <div class="prize-warpper">
+                <table id="list" class="activity-list">
+                    <tr>
+                        <th class="black-7">名次</th>
+                        <th class="black-7">书店</th>
+                        <th class="black-7">红包金额</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div id="wlb" class="bg-white">微喇叭提供技术支持</div>
+        <div class="w-pop act-pop ts-5" id="JS_pop">
+            <div>
+                <i class="icon icon-close close"></i>
+            </div>
+            <div class="header text-center">
+                <div class="img-warpper">
+                    <img src="/images/wait-load.jpg" width="100%" height="100%">
+                </div>
+                <div class="name-warpper white">
+                    <span id="JS_user_name"></span>
+                </div>
+                <p class="red margin-top-5 margin-bottom-5"><strong class="font-18">恭喜您，获得红包</strong></p>
+                <p class="red">
+                    <span class="font-20" id="JS_shop_amount">0</span>元</p>
+            </div>
+            <div class="content">
+                <ul id="JS_red_list">
+                    <li class="title font-18 red"><strong class="black-4" id="JS_shop_name"></strong>中奖名单</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /content -->
+    <script type="text/javascript" src="/libs/requirejs/require.js" data-main="/script/entry"></script>
+    <script type="text/javascript" src="/script/activity.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <title>搜索</title>
+    @@include('./public/head.html')
+</head>
+
+<body>
+    <!-- content -->
+    <div id="bw-search">
+        <div class="header bg-white">
+            <a id="JS_scan" class="f-left text-center margin-right-10">
+                <p>
+                    <i class="icon icon-scan"></i>
+                </p>
+                <p class="font-10 black-8">扫一扫</p>
+            </a>
+            <form class="f-left search-warpper" action="#">
+                <i class="icon icon-search"></i>
+                <input type="search" maxlength="20" autocomplete="off" placeholder="书号、书名、作者、出版社" id="JS_search">
+            </form>
+            <div class="f-right text-center" id="JS_advanced_search">
+                <p>
+                    <i class="icon icon-advanced-search"></i>
+                </p>
+                <p class="font-10 black-8">高级搜索</p>
+            </div>
+        </div>
+        <div class="across"></div>
+        <div class="hot bg-white">
+            <h2 class="gray">
+                <i class="icon icon-border2 margin-right-10"></i>热门搜索
+                <i class="icon icon-border2 margin-left-10"></i>
+            </h2>
+            <div class="hot-warpper">
+                <a href="/view/bookList.html?type=1&searchVal=福建少儿" class="red">福建少儿</a>
+                <a href="/view/bookList.html?type=1&searchVal=奥古丝都" class="red">奥古丝都</a>
+                <a href="/view/bookList.html?type=1&searchVal=我身在历史何处" class="red">我身在历史何处</a>
+                <a href="/view/bookList.html?type=1&searchVal=新视野英语" class="red">新视野英语</a>
+                <a href="/view/bookList.html?type=1&searchVal=文学" class="black-5">文学</a>
+                <a href="/view/bookList.html?type=1&searchVal=那年花开" class="black-5">那年花开</a>
+            </div>
+        </div>
+        <div class="across"></div>
+        <div class="history bg-white">
+            <h2 class="gray">
+                <i class="icon icon-border2 margin-right-10"></i>历史搜索
+                <i class="icon icon-border2 margin-left-10"></i>
+            </h2>
+            <div id="JS_history" class="history-warpper black-5">
+
+            </div>
+        </div>
+    </div>
+    <!-- /content -->
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script type="text/javascript" src="/libs/requirejs/require.js" data-main="/script/entry"></script>
+    <script type="text/javascript" src="/script/search.js"></script>
+</body>
+
+</html>

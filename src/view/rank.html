@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <title>排行榜</title>
+    @@include('./public/head.html')
+</head>
+
+<body>
+    <!-- content -->
+    <div id="bw-rank">
+        <div class="header" id="JS_header">
+            <h1 class="white" id="JS_title">博文&全国排行榜</h1>
+        </div>
+        <div id="JS_list" class="padding-12 padding-bottom-0">
+            
+        </div>
+        <div id="JS_loading_more" class="w-loading-more margin-f-10 gray"><span class="JS_loading"><i class="icon icon-loading margin-right-5"></i>加载更多</span><span class="JS_loaded disn">加载完毕</span></div>
+    </div>
+    <!-- /content -->
+    <script type="text/javascript" src="/libs/requirejs/require.js" data-main="/script/entry"></script>
+    <script type="text/javascript" src="/script/rank.js"></script>
+</body>
+
+</html>

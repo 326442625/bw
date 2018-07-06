@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>客户下单记录</title>
+    @@include('./public/head.html')
+</head>
+
+<body>
+    <div id="book-record">
+        <!-- content -->
+        <div class="header bg-red white">
+            <p class="margin-bottom-10">本书从<span id="JS_start_time">2018-01-01</span>至<span id="JS_end_time">2018-01-01</span>期间,</p>
+            <p>共下单：<span id="JS_deliver_num">0</span>本；要货：<span id="JS_order_num">0</span>次；下单客户：<span id="JS_user_num">0</span>家。</p>
+        </div>
+        <ul class="bg-white padding-12 margin-top-10">
+           <li class="clearfix border-bottom padding-bottom-10">
+               <span class="width-70 f-left font-13 gray">书名</span>
+               <p id="JS_book_name" class="f-left black book-name font-16">---</p>
+           </li>
+           <li class="line-40 border-bottom">
+                <span class="width-70 dis-i-block font-13 gray">出版社</span><span class="black font-15" id="JS_publish">---</span>
+           </li>
+           <li class="padding-top-12 w-row text-center">
+               <a href="javascript:;" class="w-col-6">
+                   <p class="font-13 gray">定价</p>
+                   <p class="margin-top-8 font-15">¥<span id="JS_price">0.00</span></p>
+               </a>
+               <a href="javascript:;" class="w-col-12">
+                   <p class="font-13 gray">国际码</p>
+                   <p class="margin-top-8 font-15">【<span id="JS_bar_code">---</span>】</p>
+               </a>
+               <a href="javascript:;" class="w-col-6">
+                   <p class="font-13 gray">库存</p>
+                   <p class="margin-top-8 font-15"><span id="JS_stock">0</span>本</p>
+               </a>
+           </li>
+        </ul>
+        <div id="date" class="bg-white clearfix margin-top-10">
+ 
+        </div>
+        <div class="wire"></div>
+        <table id="list" class="w-table text-center margin-f-10">
+            <tr>
+                <th>订购时间</th>
+                <th>订购单号</th>
+                <th>订购数量</th>
+            </tr>
+        </table>
+        <ul id="JS_page" class="pagination margin-top-10 padding-12 clearfix text-center padding-bottom-20">
+        
+        </ul>
+        <!-- /content -->
+        <!-- <div class="footer"> -->
+            <!-- <p class="text-right"><span class="gray">合计：</span><span id="JS_total" class="margin-right-25">0</span></p> -->
+        <!-- </div> -->
+    </div>
+    <script type="text/javascript" src="/libs/requirejs/require.js" data-main="/script/entry"></script>
+    <script type="text/javascript" src="/script/bookRecord.js"></script>
+</body>
+
+</html>

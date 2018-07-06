@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>我的书单</title>
+    @@include('./public/head.html')
+</head>
+
+<body> 
+    <!-- content -->
+    <div id="share-book">
+       <div class="line-42 padding-lr-12 bg-white">
+            <a href="javascript:;" class="font-15 black-4" id="JS_edit">编辑</a>
+            <a href="javascript:;" class="font-15 black-4 border-gright padding-right-12 edit-status" id="JS_com">完成</a>
+            <a href="javascript:;" class="font-15 red  padding-left-12 edit-status" id="JS_del">删除</a>
+            <a href="javascript:;" id="JS_new_book" class="f-right font-15 red"><i class="icon icon-plus icon-red-plus margin-right-5"></i><span>新建书单</span></a>
+       </div>
+       <div class="padding-12" id="JS_list">
+             
+       </div>
+       <div class="w-pop new-book-pop ts-5 bg-white text-center" id="JS_pop">
+            <div class="pop-header">
+                <p class="font-16">新建书单</p>
+            </div>
+            <div class="content margin-bottom-30">
+                <div class="search-warpper">
+                    <input type="text" autocomplete="off" placeholder="书单名" id="JS_H_name">
+                </div>
+            </div>
+            <div class="pop-footer text-center w-row border-top">
+                <a href="javascript:;" class="red font-16 close w-col-12 border-gright">取消</a>
+                <a href="javascript:;" class="red font-16 w-col-12" id="JS_add_book">完成</a>
+            </div>
+        </div>
+        <div class="bw-home">
+           <a href="/" class="white">
+                <p><i class="icon icon-go-home"></i></p>
+                <p class="margin-top-1 font-10">海西博文</p>
+           </a>
+        </div>
+    </div>
+    <!-- /content -->
+    <script type="text/javascript" src="/libs/requirejs/require.js" data-main="/script/entry"></script>
+    <script type="text/javascript" src="/script/shareBook.js"></script>
+</body>
+
+</html>

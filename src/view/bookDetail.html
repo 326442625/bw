@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>书单详情</title>
+    @@include('./public/head.html')
+</head>
+
+<body>
+    <!-- content -->
+    <div id="book-detail" class="disn">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="/images/wait-load.jpg" width="100%" height="100%">
+                </div>
+            </div>
+            <div class="swiper-pagination white"></div>
+        </div>
+        <div class="bg-white padding-left-12 padding-right-12 padding-bottom-15">
+            <div class="padding-top-16 clearfix font-12 pos-rel">
+                <p><span class="gray">定价 :</span><span class="red font-12">￥<b class="font-23" id="JS_q_price">0</b><span id="JS_h_price">.00</span></span> </p>
+                <p class="margin-top-4 JS_discount"><span class="gray">所享折扣 :</span><a href="javascript:;" id="JS_coupon" class="coupon red font-12 margin-left-5">0折</a><a href="javascript:;" id="JS_coupon2" class="coupon red font-12 margin-left-5">0折</a></p>
+                <p class="add-warpper"><i id="JS_attention" class="icon icon-heart no-heart margin-right-18"></i><a href="javascript:;" class="red-botton" id="JS_add_book">加入书单</a><a href="javascript:;" class="red-botton margin-left-10" id="JS_share_book">分享</a></p>
+            </div>  
+            <p class="font-16 margin-top-10 black" id="JS_name">------</p>
+            <p class="font-14 title gray" id="JS_note">------</p>
+            <div class="open-warpper">
+                <a href="javascript:;" id="JS_open" class="gray"><span>展开</span><i class="icon icon-down margin-left-5 ts-3"></i></a>
+            </div>
+            <div id="JS_marketing" class="margin-top-10 border-top disn">
+                <div class="pos-rel">
+                    <div class="marketing-warpper">
+                        <i class="icon icon-marketing2 margin-right-5"></i><i class="icon icon-marketing3"></i>  
+                    </div>
+                </div>
+                <div class="marketing-content black-4">
+                   <p><span id="JS_marketing_name"></span>：<span id="JS_marketing_content"></span></p>
+                </div>
+            </div>
+            <div class="record gray clearfix margin-top-20">
+                <div class="border-right f-left padding-right-18">
+                    <p>本书自<span id="JS_start_time">2018-01-01</span>至<span id="JS_end_time">2018-01-01</span>期间</p>
+                    <div class="clearfix margin-top-8 text-center">
+                        <div class="w-col-8">
+                            <p><span id="JS_deliver_num" class="red font-16">0</span>本</p>
+                            <p>出货</p>
+                        </div>
+                        <div class="w-col-8">
+                            <p><span id="JS_order_num" class="red font-16">0</span>次</p>
+                            <p>下单</p>
+                        </div>
+                        <div class="w-col-8">
+                            <p><span id="JS_user_num" class="red font-16">0</span>家</p>
+                            <p>下单客户</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="f-left margin-left-14" id="JS_record">
+                    <p class="text-center margin-top-8 margin-bottom-5"><i class="icon icon-record"></i></p>
+                    <p>查看下单记录</p>
+                </div>
+            </div>
+        </div>
+        <div id="attributes" class="margin-top-12 bg-white">
+           <h5 class="border-bottom"><i class="icon icon-attr margin-left-10 margin-right-10"></i>产品参数</h5>
+           <ul class="padding-lr-12 font-13">
+               <li class="border-all">
+                  <p class="margin-bottom-15">
+                     <span><span class="gray width-58 dis-i-block">书号</span><span id="JS_book_number">&nbsp;</span></span>
+                     <span class="f-right"><span class="gray width-58 dis-i-block">国际代码</span><span id="JS_book_code">&nbsp;</span></span>
+                  </p>
+                  <p class="margin-bottom-15">
+                     <span><span class="gray width-58 dis-i-block">出版时间</span><span id="JS_book_time">&nbsp;</span></span>
+                     <span class="f-right"><span class="gray width-58 dis-i-block">开本</span><span id="JS_kb">&nbsp;</span></span>
+                  </p>
+                  <p>
+                     <span><span class="gray width-58 dis-i-block">装帧</span><span id="JS_zz">&nbsp;</span></span>
+                     <span class="f-right"><span class="gray width-58 dis-i-block">每包件数</span><span id="JS_package">&nbsp;</span></span>
+                  </p>
+               </li>
+               <li class="border-bottom">
+                   <span class="gray width-80 dis-i-block">作者</span><span id="JS_writer"></span>
+               </li>
+               <li class="border-bottom">
+                   <span class="gray width-80 dis-i-block">出版社</span><span id="JS_publish"></span>
+               </li>
+               <li class="border-bottom">
+                   <span class="gray width-80 dis-i-block">精品状态</span><span id="JS_status"></span>
+               </li>
+               <li class="border-bottom">
+                   <span class="gray width-80 dis-i-block">类别</span><span id="JS_type"></span>
+               </li>
+               <li class="border-bottom">
+                   <span class="gray width-80 dis-i-block">销售类型</span><span id="JS_sale_type"></span>
+               </li>
+               <li class="border-bottom">
+                   <span class="gray width-80 dis-i-block">丛书名</span><span id="JS_cname"></span>
+               </li>
+               <li class="border-bottom">
+                   <span class="gray width-80 dis-i-block">库存</span><span id="JS_kc"></span>
+               </li>
+           </ul>
+        </div>
+        <div id="wlb">微喇叭提供技术支持</div>
+        <div id="cart" class="bg-white gray border-top">
+            <div class="f-left border-right width-75">
+                <a href="/view/cart.html">
+                    <p class="margin-top-8"><i class="icon icon-cart"></i></p>
+                    <p>购物车</p>
+                    <span id="JS_cart_num" class="icon-circle">0</span>
+                </a>
+            </div>
+            <div class="f-left number-line">
+               <div>
+                    <label class="f-left margin-right-5">数量 : </label><div class="number f-left"><span id="JS_dec" class="decrease f-left"></span><input id="JS_number" class="f-left" type="tel" value="1"><span id="JS_inc" class="increase f-left"></span></div>
+               </div>
+            </div>
+            <div id="JS_add" class="f-right operate bg-red white">加入购物车</div>
+        </div>
+        <div class="w-pop add-book-pop ts-5 bg-gray" id="JS_pop">
+                <div class="pop-header text-center">
+                    <div class="img-warpper text-center">
+                        <img src="/images/wait-load.jpg" alt="" height="100%">
+                    </div>
+                    <p class="black-9 font-16 pop-title">添加本书至书单</p>
+                </div>
+                <div class="content">
+                    <ul class="padding-lr-12" id="JS_share_list">
+                        <li class="item disn">
+                            <label class="checkbox margin-right-12 no-show">
+                                <i class="icon icon-login-no-checked"></i>  
+                            </label>
+                            <input type="text" placeholder="请输入书单名称" id="JS_new_name">
+                            <a href="javascript:;" class="f-right red font-16" id="JS_new_submit">确定</a>
+                        </li>
+                        <li class="item text-center">
+                            <a href="javascript:;" id="JS_new_book"><i class="icon icon-plus margin-right-5"></i><span class="black-9 font-16">新建书单</span></a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="pop-footer text-center line-50 close">
+                     <a href="javascript:;" class="red font-16">完成</a>
+                </div>
+        </div>
+        <div class="bw-home">
+            <a href="/" class="white">
+                 <p><i class="icon icon-go-home"></i></p>
+                 <p class="margin-top-1 font-10">海西博文</p>
+            </a>
+         </div>
+    </div>
+    <!-- /content -->
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script type="text/javascript" src="/libs/requirejs/require.js" data-main="/script/entry"></script>
+    <script type="text/javascript" src="/script/bookDetail.js"></script>
+</body>
+
+</html>

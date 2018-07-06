@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title id="JS_book_title">书单</title>
+    @@include('./public/head.html')
+</head>
+
+<body>
+    <!-- content -->
+    <div id="book-list">
+        <div id="JS_list" class="padding-8 w-row padding-bottom-0 single"></div>
+        <div id="JS_loading_more" class="w-loading-more"><span class="JS_loading"><i class="icon icon-loading margin-right-5"></i>加载更多</span><span class="JS_loaded disn">加载完毕</span></div>
+    </div>
+    <div class="share-warpper" id="JS_share">
+        <div class="margin-top-10"><i class="icon icon-share-btn"></i></div>
+        <div class="font-12">分享</div>
+    </div>
+    <!-- /content --> 
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script type="text/javascript" src="/libs/requirejs/require.js" data-main="/script/entry"></script>
+    <script type="text/javascript" src="/script/shareBookList.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>封闭式图书</title>
+    @@include('./public/head.html')
+</head>
+
+<body>
+    <div id="JS_closed" class="recommend-warpper">
+        <!-- content -->
+        <div id="JS_list" class="warpper bg-white">
+ 
+        </div>
+        <div id="JS_loading_more" class="w-loading-more margin-f-10"><span class="JS_loading"><i class="icon icon-loading margin-right-5"></i>加载更多</span><span class="JS_loaded disn">加载完毕</span></div>
+        <div id="wlb">微喇叭提供技术支持</div>
+        <!-- /content -->
+    </div>
+    <script type="text/javascript" src="/libs/requirejs/require.js" data-main="/script/entry"></script>
+    <script type="text/javascript" src="/script/closed.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>高级搜索</title>
+    @@include('./public/head.html')
+</head>
+
+<body>
+    <!-- content -->
+    <div id="advanced-search">
+        <ul id="JS_search_warpper">
+            <li id="JS_search" class="item border-gbottom bg-white open">
+                <div class="title gray JS_status">
+                    <span>专项搜索</span>
+                    <a href="javascript:;" class="f-right font-12 gray">
+                        <span class="text">收起</span>&nbsp;
+                        <i class="icon icon-down icon-top ts-3"></i>
+                    </a>
+                </div>
+                <div class="content submenu show clearfix">
+                    <div class="search-warpper f-left">
+                        <i class="icon icon-search"></i>
+                        <input type="text" autocomplete="off" placeholder="书名" id="JS_H_name">
+                    </div>
+                    <div class="search-warpper f-right">
+                        <i class="icon icon-search"></i>
+                        <input type="text" autocomplete="off" placeholder="国际码" id="JS_H_isbn">
+                    </div>
+                    <div class="search-warpper f-left margin-top-15">
+                        <i class="icon icon-search"></i>
+                        <input type="text" autocomplete="off" placeholder="条码" id="JS_h_barcode">
+                    </div>
+                    <div class="search-warpper f-right margin-top-15">
+                        <i class="icon icon-search"></i>
+                        <input type="text" autocomplete="off" placeholder="作者" id="JS_H_writer">
+                    </div>
+                    <div class="search-warpper f-left margin-top-15">
+                        <i class="icon icon-search"></i>
+                        <input type="text" autocomplete="off" placeholder="出版社" id="JS_h_publish">
+                    </div>
+                    <div class="search-warpper f-right margin-top-15">
+                        <i class="icon icon-search"></i>
+                        <input type="text" autocomplete="off" placeholder="丛书名" id="JS_H_serial_book">
+                    </div>
+                </div>
+            </li>
+            <li class="item bg-white">
+                <div class="title gray">
+                    <span>条件选择(多项)</span>
+                </div>
+                <div class="a-content">
+                    <a href="javascript:;" class="margin-right-10 JS_checked_mul"><span id="JS_H_newbook">首次到货</span>
+                        <i class="icon"></i>
+                    </a>
+                    <a href="javascript:;" class="JS_checked_mul"><span id="JS_H_qty_zero">库存图书</span>
+                        <i class="icon"></i>
+                    </a>
+                </div>
+            </li>
+            <li class="item bg-white">
+                <div class="title gray">
+                    <span>最后到货时间</span>
+                </div>
+                <div class="a-content clearfix text-center">
+                    <div class="search-warpper f-left">
+                        <input id="JS_start_time" placeholder="起始日期" class="width-100 text-center">
+                    </div>
+                    <div class="gray f-left margin-left-10 margin-right-10">-</div>
+                    <div class="search-warpper f-left">
+                        <input id="JS_end_time"  placeholder="终止日期" class="width-100  text-center">
+                    </div>
+                </div>
+            </li>
+            <li class="item bg-white">
+                <div class="title gray">
+                    <span>价格区间</span>
+                </div>
+                <div class="a-content clearfix text-center">
+                    <div class="search-warpper f-left">
+                        <input type="text" name="JS_min_price" autocomplete="off" placeholder="最低价" class="width-100  text-center JS_price">
+                    </div>
+                    <div class="gray f-left margin-left-10 margin-right-10">-</div>
+                    <div class="search-warpper f-left">
+                        <input type="text" name="JS_max_price" autocomplete="off" placeholder="最高价" class="width-100  text-center JS_price">
+                    </div>
+                </div>
+            </li>
+            <li class="item bg-white">
+                <div class="title gray">
+                    <span>状态</span>
+                </div>
+                <div id="JS_s_status" class="a-content padding-top-10">
+                    <div class="w-loading-more JS_loading_more2"><i class="icon icon-loading"></i></div>
+                </div>
+            </li>
+            <li class="item bg-white">
+                <div class="title gray">
+                    <span>类型</span>
+                </div>
+                <div id="JS_s_type" class="a-content padding-top-10">
+                    <div class="w-loading-more JS_loading_more2"><i class="icon icon-loading"></i></div>
+                </div>
+            </li>
+            <li id="JS_category" class="item padding-bottom-10 bg-white open">
+                <div class="title gray JS_status">
+                    <span>图书分类</span>
+                    <a href="javascript:;" class="f-right font-12 gray">
+                        <span class="text">收起</span>&nbsp;
+                        <i class="icon icon-down icon-top ts-3"></i>
+                    </a>
+                </div>
+                <ul id="JS_list" class="submenu show">
+                    <!-- <li class="type gray bg-white border-bottom">
+                        <div class="type-name gray JS_link">
+                            <span>文学</span>
+                            <a href="javascript:;" class="f-right">
+                                <i class="icon icon-open2"></i>
+                            </a>
+                        </div>
+                        <div class="submenu border-top">
+                            <div class="a-content">
+                                <a href="javascript:;" class="active margin-right-10 margin-bottom-10">全译版名著
+                                    <i class="icon"></i>
+                                </a>
+                                <a href="javascript:;" class="margin-bottom-10 margin-right-10">青少版名著
+                                    <i class="icon"></i>
+                                </a>
+                                <a href="javascript:;" class="margin-right-10 margin-bottom-10">衔接教材
+                                    <i class="icon"></i>
+                                </a>
+                                <a href="javascript:;" class="margin-right-10">中外名著（含无障碍）
+                                    <i class="icon"></i>
+                                </a>
+                                <a href="javascript:;" class="more">更多
+                                    <i class="icon icon-more"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="type gray bg-white border-bottom">
+                        <div class="type-name gray JS_link">
+                            <span>社科</span>
+                            <a href="javascript:;" class="f-right">
+                                <i class="icon icon-open2"></i>
+                            </a>
+                        </div>
+                        <div class="submenu border-top">
+                            <div class="a-content">
+                                <a href="javascript:;" class="active margin-right-10 margin-bottom-10">全译版名著
+                                    <i class="icon"></i>
+                                </a>
+                                <a href="javascript:;" class="margin-bottom-10 margin-right-10">青少版名著
+                                    <i class="icon"></i>
+                                </a>
+                                <a href="javascript:;" class="margin-right-10 margin-bottom-10">衔接教材
+                                    <i class="icon"></i>
+                                </a>
+                                <a href="javascript:;" class="margin-right-10">中外名著（含无障碍）
+                                    <i class="icon"></i>
+                                </a>
+                                <a href="javascript:;" class="more">更多
+                                    <i class="icon icon-more"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="type gray bg-white border-bottom">
+                        <div class="type-name gray JS_link">
+                            <span>商务经济</span>
+                            <a href="javascript:;" class="f-right">
+                                <i class="icon icon-open2"></i>
+                            </a>
+                        </div>
+                        <div class="submenu border-top">
+                            <div class="a-content">
+                                <a href="javascript:;" class="active margin-right-10 margin-bottom-10">全译版名著
+                                    <i class="icon"></i>
+                                </a>
+                                <a href="javascript:;" class="margin-bottom-10 margin-right-10">青少版名著
+                                    <i class="icon"></i>
+                                </a>
+                                <a href="javascript:;" class="margin-right-10 margin-bottom-10">衔接教材
+                                    <i class="icon"></i>
+                                </a>
+                                <a href="javascript:;" class="margin-right-10">中外名著（含无障碍）
+                                    <i class="icon"></i>
+                                </a>
+                                <a href="javascript:;" class="more">更多
+                                    <i class="icon icon-more"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="type gray bg-white border-bottom">
+                        <div class="type-name gray JS_link">
+                            <span>J教辅</span>
+                            <a href="javascript:;" class="f-right">
+                                <i class="icon icon-open2"></i>
+                            </a>
+                        </div>
+                        <div class="submenu border-top">
+                            <div class="a-content">
+                                <a href="javascript:;" class="active margin-right-10 margin-bottom-10">全译版名著
+                                    <i class="icon"></i>
+                                </a>
+                                <a href="javascript:;" class="margin-bottom-10 margin-right-10">青少版名著
+                                    <i class="icon"></i>
+                                </a>
+                                <a href="javascript:;" class="margin-right-10 margin-bottom-10">衔接教材
+                                    <i class="icon"></i>
+                                </a>
+                                <a href="javascript:;" class="margin-right-10">中外名著（含无障碍）
+                                    <i class="icon"></i>
+                                </a>
+                                <a href="javascript:;" class="more">更多
+                                    <i class="icon icon-more"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="type gray bg-white border-bottom">
+                        <div class="type-name gray JS_link">
+                            <span>作文</span>
+                            <a href="javascript:;" class="f-right">
+                                <i class="icon icon-open2"></i>
+                            </a>
+                        </div>
+                        <div class="submenu border-top">
+                            <div class="a-content">
+                                <a href="javascript:;" class="active margin-right-10 margin-bottom-10">全译版名著
+                                    <i class="icon"></i>
+                                </a>
+                                <a href="javascript:;" class="margin-bottom-10 margin-right-10">青少版名著
+                                    <i class="icon"></i>
+                                </a>
+                                <a href="javascript:;" class="margin-right-10 margin-bottom-10">衔接教材
+                                    <i class="icon"></i>
+                                </a>
+                                <a href="javascript:;" class="margin-right-10">中外名著（含无障碍）
+                                    <i class="icon"></i>
+                                </a>
+                                <a href="javascript:;" class="more">更多
+                                    <i class="icon icon-more"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="type gray bg-white border-bottom">
+                        <div class="type-name gray JS_link">
+                            <span>字帖</span>
+                            <a href="javascript:;" class="f-right">
+                                <i class="icon icon-open2"></i>
+                            </a>
+                        </div>
+                        <div class="submenu">
+                            <div class="a-content">
+                                <a href="javascript:;" class="active margin-right-10 margin-bottom-10">全译版名著
+                                    <i class="icon"></i>
+                                </a>
+                                <a href="javascript:;" class="margin-bottom-10 margin-right-10">青少版名著
+                                    <i class="icon"></i>
+                                </a>
+                                <a href="javascript:;" class="margin-right-10 margin-bottom-10">衔接教材
+                                    <i class="icon"></i>
+                                </a>
+                                <a href="javascript:;" class="margin-right-10">中外名著（含无障碍）
+                                    <i class="icon"></i>
+                                </a>
+                                <a href="javascript:;" class="more">更多
+                                    <i class="icon icon-more"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </li> -->
+
+                </ul>
+                <div id="JS_loading_more" class="w-loading-more"><i class="icon icon-loading"></i></div>
+            </li>
+        </ul>
+        <div class="footer pox-fixed w-row margin-top-10 border-top border-bottom">
+            <a href="javascript:;" class="bg-white w-col-12" id="JS_reset">重置</a>
+            <a href="javascript:;" class="bg-red white w-col-12" id="JS_submit">确定</a>
+        </div>
+    </div>
+    <!-- /content -->
+    <!-- footer -->
+    <footer id="bw-footer" class="w-row">
+        <a href="/" class="f-left">
+            <i class="icon icon-nav icon-nav-home"></i>
+            <p class="margin-top-2">首页</p>
+        </a>
+        <a href="#" class="f-left active">
+            <i class="icon icon-nav icon-nav-search"></i>
+            <p class="margin-top-2">高级搜索</p>
+        </a>
+        <a href="/view/category.html" class="f-left">
+            <i class="icon icon-nav icon-nav-category"></i>
+            <p class="margin-top-2">书目分类</p>
+        </a>
+        <a href="/view/cart.html" class="f-left">
+            <i class="icon icon-nav icon-nav-cart"></i>
+            <p class="margin-top-2">购物车</p>
+        </a>
+        <a href="/view/user.html" class="f-left">
+            <i class="icon icon-nav icon-nav-user"></i>
+            <p class="margin-top-2">个人中心</p>
+        </a>
+    </footer>
+    <!-- /footer -->
+    <script type="text/javascript" src="/libs/requirejs/require.js" data-main="/script/entry"></script>
+    <script type="text/javascript" src="/script/advancedSearch.js"></script>
+</body>
+
+</html>

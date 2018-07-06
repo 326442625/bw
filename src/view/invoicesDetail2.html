@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>博文销退单详情</title>
+    @@include('./public/head.html')
+</head>
+
+<body>
+    <!-- content -->
+    <div id="bw-invoices">
+        <div class="line-42 padding-top-8 bg-white padding-lr-12 border-bottom">
+            <i class="icon icon-r-order margin-right-5"></i>
+            <span class="red font-17">往来单据</span>
+        </div>
+        <div class="line-36 padding-top-8 bg-white padding-lr-12 font-12 border-bottom">
+            <span>销退单号:<span id="JS_fcode" class="gray">---</span></span>
+            <span class="f-right">单据时间：<span id="JS_time" class="gray">---</span></span>
+        </div>
+        <div class="line-42 padding-top-8 bg-white padding-lr-12 font-15">
+            <span>客户名称</span>
+            <span id="JS_shop_name" class="gray f-right">---</span>
+        </div>
+        <div class="line-46 bg-white padding-lr-12 border-bottom margin-top-10">
+            <i class="icon icon-r-order margin-right-5"></i>
+            <span class="red font-17">产品单据</span>
+        </div>
+        <div class="tab black bg-white border-bottom JS_tab">
+            <ul class="w-row bg-white text-center">
+                <li class="item w-col-6">
+                    <a href="javascript:;" class="gray">标准销退单
+                            <span></span>
+                    </a>
+                </li>
+                <li class="item w-col-6">
+                    <a href="javascript:;" class="gray">非标准销退单
+                       <span></span>
+                    </a>
+                </li>
+                <li class="item w-col-6">
+                    <a href="javascript:;" class="gray">退货差异
+                            <span></span>
+                    </a>
+                </li>
+                <li class="item w-col-6">
+                    <a href="javascript:;"  class="gray">退货退回
+                            <span></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <ul id="JS_list" class="invoices-list padding-12 bg-white padding-bottom-0">
+            
+        </ul>
+        <div id="JS_loading_more" class="w-loading-more border-bottom"><i class="icon icon-loading"></i><a href="javascript:;" class="JS_loading">点击加载更多</a><span class="JS_loaded disn">加载完毕</span></div>
+        <div class="bg-white padding-lr-12 padding-top-12">
+            <p class="font-12 gray margin-bottom-8"><span>商品数量</span><span class="f-right"><span id="JS_kind">0</span>种<span id="JS_numbers">0</span>件</span></p>
+            <p class="font-12 gray margin-bottom-8"><span>总码洋</span><span class="f-right">¥<span id="JS_total_price">0.00</span></span></p>
+            <p class="font-16 padding-bottom-20">总实洋<span class="red f-right">¥<span id="JS_total_real_price" class="red">0.00</span></p>
+       </div>
+       <div id="wlb">微喇叭提供技术支持</div>
+    </div>
+    <!-- /content -->
+    <script type="text/javascript" src="/libs/requirejs/require.js" data-main="/script/entry"></script>
+    <script type="text/javascript" src="/script/invoiceDetail2.js"></script>
+</body>
+
+</html>

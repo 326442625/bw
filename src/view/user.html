@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <title>个人中心</title>
+    @@include('./public/head.html')
+</head>
+
+<body>
+    <!-- content -->
+    <div id="bw-user">
+        <div class="header">
+            <div class="bg-red h-top"></div>
+            <div class="bg-white h-bottom clearfix text-center">
+                <div class="w-col-6">
+                    <a href="/view/bookList.html?type=5">
+                        <p class="font-16"><strong id="JS_attention">0</strong></p>
+                        <p class="gray font-12 margin-top-5">关注</p>
+                    </a>
+                </div>
+                <div class="w-col-6">
+                   <a href="/view/shareBook.html">
+                        <p class="font-16"><strong id="JS_book">0</strong></p>
+                        <p class="gray font-12 margin-top-5">书单</p>
+                   </a>
+                </div>
+                <div  class="w-col-6">
+                   <a href="/view/growth.html">
+                        <p class="red font-16"><strong id="JS_growth">0</strong></p>
+                        <p class="gray font-12 margin-top-5">成长值</p>
+                   </a>
+                </div>
+                <div  class="w-col-6">
+                    <a href="/view/bookList.html?type=6">
+                        <p class="font-16"><strong id="JS_tracks">0</strong></p>
+                        <p class="gray font-12 margin-top-5">足迹</p>
+                    </a>
+                </div>
+            </div>
+            <div class="user-info bg-white">
+                <a href="/view/growth.html"><i id="JS_grade" class="icon icon-grade"></i></a>
+                <img id="JS_user_img" src="/images/wait-load.jpg">
+                <p class="margin-top-5">
+                    <strong class="user-name" id="JS_user_name">---</strong>
+                </p>
+                <p class="margin-top-4 shop-name">
+                    <i class="icon icon-user-home margin-right-5"></i><span class="gray font-14" id="JS_shop_name">---</span>
+                </p>
+                <div id="JS_is_master" class="child-account font-12 disn">
+                    <a href="/view/account.html" class="red">
+                        <i class="icon icon-link margin-right-4 margin-left-12"></i><span class="margin-right-4">我的子账号</span><i class="icon icon-r-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+ 
+        <div class="order-warpper warpper bg-white margin-top-10">
+            <div class="title border-bottom">
+                <span class="font-15">我的订单</span><span class="red font-12 margin-left-5 t-mouth">(本月)</span>
+                <a href="javascript:;" class="f-right JS_order_all_link">
+                    <span class="gray font-12">查看全部</span>
+                    <i class="icon icon-right"></i>
+                </a>
+            </div>
+            <div class="w-row text-center">
+                <a href="javascript:;" class="w-col-6 JS_order_link">
+                    <p><i class="icon icon-nav icon-order2"></i></p>
+                    <p class="margin-top-4">全部订单</p>
+                    <span class="icon-circle disn" id="JS_order_all_num">0</span>
+                </a>
+                <a href="javascript:;" class="w-col-6 JS_order_link">
+                    <p><i class="icon icon-nav icon-order3"></i></p>
+                    <p class="margin-top-4">待提交</p>
+                    <span class="icon-circle disn" id="JS_order_no_submit_num">0</span>
+                </a>
+                <a href="javascript:;" class="w-col-6 JS_order_link">
+                    <p><i class="icon icon-nav icon-order3"></i></p>
+                    <p class="margin-top-4">已提交</p>
+                    <span class="icon-circle disn" id="JS_order_submit_num">0</span>
+                </a>
+                <a href="javascript:;" class="w-col-6 JS_order_link">
+                    <p><i class="icon icon-nav icon-order4"></i></p>
+                    <p class="margin-top-4">已配货</p>
+                    <span class="icon-circle disn" id="JS_order_allocated_num">0</span>
+                </a>
+            </div>
+        </div>
+        <div class="social-warpper warpper bg-white margin-top-10">
+            <div class="title border-bottom">
+                <span class="font-15">我的往来</span>
+                <a href="javascript:;" class="f-right JS_invoice_all_link">
+                    <span class="gray font-12">查看全部</span>
+                    <i class="icon icon-right"></i>
+                </a>
+            </div>
+            <div class="w-row text-center">
+                <a href="javascript:;" class="w-col-6 JS_invoice_link">
+                    <p><i class="icon icon-nav icon-order2"></i></p>
+                    <p class="margin-top-4">全部单据</p>
+                    <span class="icon-circle disn" id="JS_invoice_all">0</span>
+                </a>
+                <a href="javascript:;" class="w-col-6 JS_invoice_link">
+                    <p><i class="icon icon-nav icon-order5"></i></p>
+                    <p class="margin-top-4">博文批销单</p>
+                    <span class="icon-circle disn" id="JS_invoice_sale">0</span>
+                </a>
+                <a href="javascript:;" class="w-col-6 JS_invoice_link">
+                    <p><i class="icon icon-nav icon-order6"></i></p>
+                    <p class="margin-top-4">博文销退单</p>
+                    <span class="icon-circle disn" id="JS_invoice_sale_return">0</span>
+                </a>
+                <a href="javascript:;" class="w-col-6"></a>
+            </div>
+        </div>
+        <div class="margin-top-10 discount bg-white">
+            <span class="font-15">显示折扣</span>
+            <label class="checkbox f-right">
+                <input type="checkbox" name="is_show_discount">
+                <i class="icon icon-close-checked"></i>
+                <i class="icon icon-open-checked"></i>
+            </label>
+        </div>
+        <div class="w-pop verify-pop ts-5 bg-white" id="JS_pop">
+             <p class="border-bottom line-55 font-18 black text-center">信息验证<i class="icon icon-close2 close"></i></p>
+             <div class="content">
+                <div class="input-warpper search-warpper margin-top-15 ">
+                    <i class="icon icon-login-pwd margin-top-10 margin-left-15 margin-right-10"></i><input type="password" placeholder="请输入密码" autocomplete="off" class="JS_input" id="JS_pwd">
+                </div> 
+                <a href="javascript:;" id="JS_submit" class="red-botton margin-top-40 line-40">提交</a>
+             </div>
+        </div>
+        <div id="wlb">微喇叭提供技术支持</div>
+      
+    </div>
+    <!-- /content -->
+    <!-- footer -->
+    <footer id="bw-footer" class="w-row">
+        <a href="/" class="f-left">
+            <i class="icon icon-nav icon-nav-home"></i>
+            <p class="margin-top-2">首页</p>
+        </a>
+        <a href="/view/advancedSearch.html" class="f-left">
+            <i class="icon icon-nav icon-nav-search"></i>
+            <p class="margin-top-2">高级搜索</p>
+        </a>
+        <a href="/view/category.html" class="f-left">
+            <i class="icon icon-nav icon-nav-category"></i>
+            <p class="margin-top-2">书目分类</p>
+        </a>
+        <a href="/view/cart.html" class="f-left">
+            <i class="icon icon-nav icon-nav-cart"></i>
+            <p class="margin-top-2">购物车</p>
+        </a>
+        <a href="#" class="f-left active">
+            <i class="icon icon-nav icon-nav-user"></i>
+            <p class="margin-top-2">个人中心</p>
+        </a>
+    </footer>
+    <!-- /footer -->
+    <script type="text/javascript" src="/libs/requirejs/require.js" data-main="/script/entry"></script>  
+    <script type="text/javascript" src="/script/user.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <title>订单详情</title>
+    @@include('./public/head.html')
+</head>
+
+<body>
+    <!-- content -->
+    <div id="bw-order" class="order-detail">
+        <div id="JS_list">
+
+        </div>
+        <div id="JS_loading_more" class="w-loading-more"><i class="icon icon-loading"></i><a href="javascript:;" class="JS_loading">点击加载更多</a><span class="JS_loaded disn">加载完毕</span></div>
+        <div class="bg-white padding-12 border-top">
+            <p class="font-13">
+                <span>商品数量</span>
+                <span class="f-right"><span id="JS_kind">0</span>种<span id="JS_total_number">0</span>件</span>
+            </p>
+            <p class="font-13 margin-top-8">
+                <span>总码洋</span>
+                <span class="f-right">¥<span id="JS_total_price">0.00</span></span>
+            </p>
+            <p class="font-16 margin-top-8">
+                <span>总实洋</span>
+                <span class="f-right red font-13">¥
+                    <span class="font-18" id="JS_q_price">0</span><span id="JS_h_price">.00</span>
+            </p>
+        </div>
+        <div class="bg-white padding-12 gray font-12 margin-top-10">
+            <p>
+                <span>订单号</span>
+                <span id="JS_sn" class="f-right"></span>
+            </p>
+            <p class="margin-top-10">
+                <span>下单人</span>
+                <span id="JS_per" class="f-right"></span>
+            </p>
+            <p class="margin-top-10">
+                <span>订单时间</span>
+                <span id="JS_time" class="f-right"></span>
+            </p>
+        </div>
+        <div class="message-warpper padding-12 bg-white margin-top-10">
+            <span class="font-16 black">留言</span>
+            <div class="message-content bg-gray margin-top-10 margin-bottom-15">
+                
+            </div>
+            <div class="clearfix">
+                <div class="question-warpper f-left">
+                    <i class="icon icon-question margin-left-10 margin-right-5"></i>
+                    <input type="text" class="gray" placeholder="输入您想要留言的内容">
+                </div>
+                <div class="f-right send">
+                    <p>
+                        <i class="icon icon-send"></i>
+                    </p>
+                    <p class="font-11 blue">发送</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /content -->
+    <script type="text/javascript" src="/libs/requirejs/require.js" data-main="/script/entry"></script>
+    <script type="text/javascript" src="/script/orderDetail.js"></script>
+</body>
+
+</html>

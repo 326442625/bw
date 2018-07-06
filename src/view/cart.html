@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>购物车</title>
+    @@include('./public/head.html')
+</head>
+
+<body>
+    <!-- content -->
+    <div id="bw-cart" class="disn">
+        <div id="JS_have">
+            <div class="quality bg-white JS_cart_item">
+         
+            </div>
+            <div class="ordinary bg-white margin-top-10 JS_cart_item">
+                
+            </div>
+            <div class="footer fixed clearfix bg-white border-bottom">
+                    <label class="checkbox f-left JS_select_all">
+                        <input type="checkbox"><i class="icon icon-no-checked2 margin-right-8"></i><i class="icon icon-checked2 margin-right-8 "></i><span>全选</span>
+                    </label>
+                    <a href="javascript:;" id="JS_submit" class="f-right opacity-6 text-center white width-100 bg-red font-15">
+                        生成订单
+                    </a>
+                    <a href="javascript:;" id="JS_del" class="f-right disn text-center white width-100 bg-red font-15">
+                        删除所选
+                    </a>
+                    <div id="JS_total_warpper" class="f-right font-12 margin-right-10 margin-top-4">
+                          <p>总实洋:</p>
+                          <p class="red">¥<span id="JS_total_q" class="font-18">0</span><span id="JS_total_h">.00</span></p>
+                    </div>
+            </div>
+        </div>
+        <div id="JS_empty" class="disn">
+            <div class="empty-status text-center">
+                <img src="/images/empty-cart.png">
+                <p class="gray">购物车空空如也~</p>
+                <a href="/" class="red-botton font-16 go">去逛逛</a>
+            </div>
+        </div>
+    </div>
+    <!-- /content -->
+    <!-- footer -->
+    <footer id="bw-footer" class="w-row">
+        <a href="/" class="f-left">
+            <i class="icon icon-nav icon-nav-home"></i>
+            <p class="margin-top-2">首页</p>
+        </a>
+        <a href="/view/advancedSearch.html" class="f-left">
+            <i class="icon icon-nav icon-nav-search"></i>
+            <p class="margin-top-2">高级搜索</p>
+        </a>
+        <a href="/view/category.html" class="f-left">
+            <i class="icon icon-nav icon-nav-category"></i>
+            <p class="margin-top-2">书目分类</p>
+        </a>
+        <a href="#" class="f-left active">
+            <i class="icon icon-nav icon-nav-cart"></i>
+            <p class="margin-top-2">购物车</p>
+        </a>
+        <a href="/view/user.html" class="f-left">
+            <i class="icon icon-nav icon-nav-user"></i>
+            <p class="margin-top-2">个人中心</p>
+        </a>
+    </footer>
+    <!-- /footer -->
+    <script type="text/javascript" src="/libs/requirejs/require.js" data-main="/script/entry"></script>
+    <script type="text/javascript" src="/script/cart.js"></script>
+</body>
+
+</html>

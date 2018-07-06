@@ -1,0 +1,47 @@
+{
+  "name": "bookshop",
+  "version": "1.0.0",
+  "description": "bookshop",
+  "main": "index.js",
+  "scripts": {
+    "dist": "gulp build-dist",
+    "test": "gulp build-test",
+    "watch": "gulp watch-dev-public",
+    "dev": "gulp build-dev",
+    "start": "gulp build-dev"
+  },
+  "author": "luoyilin",
+  "license": "ISC",
+  "dependencies": {
+    "webuploader": "^0.1.8"
+  },
+  "devDependencies": {
+    "bower": "^1.8.0",
+    "browser-sync": "^2.18.13",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-changed": "^3.1.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-file-include": "^1.2.0",
+    "gulp-html-replace": "^1.6.2",
+    "gulp-htmlmin": "^3.0.0",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-less": "^3.3.2",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.6.1",
+    "gulp-rev": "^8.0.0",
+    "gulp-rev-collector": "^1.2.2",
+    "gulp-smushit": "^1.2.0",
+    "gulp-uglify": "^3.0.0",
+    "gulp-useref": "^3.1.2",
+    "gulp-util": "^3.0.8",
+    "gulp-watch": "^4.3.11",
+    "gulp-zip": "^4.0.0",
+    "run-sequence": "^2.1.0"
+  }
+}

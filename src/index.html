@@ -1,0 +1,283 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <title>博文三通微平台</title>
+    @@include('./view/public/head.html')
+</head>
+
+<body>
+    <!-- content -->
+    <div id="home" class="disn">
+        <div id="JS_banner" class="swiper-container banner">
+            <div id="JS_warpper" class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="/images/wait-load.jpg" width="100%" height="200">
+                    </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+        <form class="search bg-white clearfix" action="#">
+            <div class="f-left search-warpper margin-left-10 margin-right-10">
+                <i class="icon icon-search"></i><input type="search" id="JS_search"  maxlength="20" autocomplete="off" placeholder="书号、书名、作者、出版社">
+            </div>
+            <div class="f-left">
+                <i class="icon icon-r-scan" id="JS_scan"></i>
+            </div>
+        </form>
+        <div class="inform margin-top-10 clearfix border-bottom">
+            <div class="f-left">
+                <a href="/view/rewards.html">
+                    <img class="opacity-0" src="/images/home1.png" width="100%" height="100%">
+                    <div class="left-title text-center">
+                        <p class="orange font-17 margin-bottom-5">倾情大回馈</p>
+                        <p class="gray font-13">手机下单 满额领红包</p>
+                    </div>
+                </a>
+            </div>
+            <div class="f-right">
+                <div id="JS_new_book" class="img-right">
+                    <a href="/view/bookList.html?type=4">
+                        <img class="opacity-0" src="/images/home2.png" width="100%" height="100%">
+                        <p class="title green font-17">新书上架</p>
+                    </a>
+                </div>
+                <div class="img-right">
+                    <a href="/view/closed.html">
+                        <img class="opacity-0"src="/images/home3.png" width="100%" height="100%">
+                        <p class="title purple font-17">封闭式图书</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="return-info bg-white">
+            <div id="JS_msg" class="clearfix swiper-container">
+                <div class="f-left">
+                    <i class="icon icon-return"></i>
+                </div>
+                <div id="JS_return_info" class="f-left font-12 margin-left-10">
+                   
+                </div>
+                <div class="f-right more border-left">
+                    <a href="/view/news.html?catId=2" class="red font-12">更多</a>
+                </div>
+            </div>
+        </div>
+        <div class="news margin-top-10 bg-white">
+            <div class="news-title">
+                <i class="icon icon-news margin-right-5"></i><span class="font-16">博文资讯</span>
+                <a href="/view/news.html?catId=1" class="gray f-right">
+                    更多<i class="icon icon-right margin-left-4"></i>
+                </a>
+            </div>
+            <div id="JS_news" class="swiper-container">
+                <ul id="JS_info" class="clearfix info-warpper swiper-wrapper">
+                    <li class="new-warpper swiper-slide">
+                        <div class="img-warpper">
+                            <img src="/images/wait-load.jpg" width="100%" height="100%">
+                        </div>
+                        <p>---</p>
+                    </li>
+                    <li class="new-warpper swiper-slide">
+                        <div class="img-warpper">
+                            <img src="/images/wait-load.jpg" width="100%" height="100%">
+                        </div>
+                        <p>---</p>
+                    </li>
+                    <li class="new-warpper swiper-slide">
+                        <div class="img-warpper">
+                            <img src="/images/wait-load.jpg" width="100%" height="100%">
+                        </div>
+                        <p>---</p>
+                    </li>
+                    <li class="new-warpper swiper-slide">
+                        <div class="img-warpper">
+                            <img src="/images/wait-load.jpg" width="100%" height="100%">
+                        </div>
+                        <p>---</p>
+                    </li>
+                    <li class="new-warpper swiper-slide">
+                        <div class="img-warpper">
+                            <img src="/images/wait-load.jpg" width="100%" height="100%">
+                        </div>
+                        <p>---</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="rank margin-top-10 bg-white">
+            <div class="rank-title">
+                <i class="icon icon-rank margin-right-5"></i><span class="font-16">排行榜</span>
+            </div>
+            <div class="d-rank rank-warpper clearfix JS_rank">
+                    <div class="f-left left-warpper">
+                            <p class="font-16 white">博文&全国排行榜 </p>
+                            <p class="rank-link-warpper"><a href="javascript:;"><i class="icon icon-rank-link"></i></a></p>
+                    </div>
+                    <div id="JS_nation_rank" class="desc f-left"></div>
+            </div>
+            <div class="l-rank rank-warpper clearfix margin-top-12 JS_rank">
+                    <div class="f-left left-warpper">
+                       <p class="font-16 white">出版社全国销售排行榜</p>
+                       <p class="rank-link-warpper"><a href="/view/rank2.html"><i class="icon icon-rank-link"></i></a></p>
+                    </div>
+                    <div id="JS_publish_rank" class="desc f-left"> </div>
+            </div>
+            <div class="p-rank rank-warpper clearfix margin-top-12 JS_rank">
+                    <div class="f-left left-warpper">
+                       <p class="font-16 white">出版新书征订</p>
+                       <p class="rank-link-warpper"><a href="/view/rank2.html"><i class="icon icon-rank-link"></i></a></p>
+                    </div>
+                    <div id="JS_subscription_book" class="desc f-left"> </div>
+            </div>
+        </div>
+        <div id="recommend" class="recommend-warpper margin-top-10">
+            <div id="JS_recommend_tab" class="nav-warpper bg-white border-bottom">
+                 <div class="swiper-container">
+                    <ul class="nav swiper-wrapper clearfix">
+                        <li class="item"><a href="javascript:;" class="active" flooker="all">事业部推荐<span></span></a></li>
+                        <li class="item"><a href="javascript:;" flooker="2">综合推荐<span></span></a></li>
+                        <li class="item"><a href="javascript:;" flooker="3">文教推荐<span></span></a></li>
+                    </ul>
+                 </div>
+                 <a href="javascript:;" id="JS_drap" class="nav-link"><i class="icon icon-down"></i></a>
+            </div>
+            <ul class="menu JS_menu">
+                   <li class="border-bottom"><a href="javascript:;">事业部推荐<span></span></a></li>
+                   <li class="border-bottom"><a href="javascript:;">综合推荐<span></span></a></li>
+                   <li class="border-bottom"><a href="javascript:;">文教推荐<span></span></a></li>
+               </ul>
+            <!-- content -->
+            <div id="JS_rec_list" class="warpper bg-white disn">
+                 
+            </div>
+            <div class="w-loading-more JS_loading_more2 padding-12"><i class="icon icon-loading"></i></div>
+            <div id="JS_empty" class="disn bg-white padding-bottom-25">
+                <div class="empty-status text-center">
+                    <img src="/images/empty-order.png">
+                    <p class="gray">没有相关数据~</p>
+                </div>
+            </div>
+            <!-- /content -->
+        </div>
+        <div class="book-list">
+            <div class="title">
+                <i class="icon icon-hot"></i><span class="font-16 margin-left-5">近期热销</span>
+            </div>
+            <div class="bg-white padding-bottom-15">
+                <ul id="JS_hot_list" class="warpper clearfix">
+                    <li class="f-left JS_detail">
+                        <p><img src="/images/wait-load.jpg"></p>
+                        <p class="book-name margin-top-4">--</p>
+                        <p class="gray font-12 margin-top-8">--</p>
+                    </li>
+                    <li class="f-left JS_detail" >
+                        <p><img src="/images/wait-load.jpg"></p>
+                        <p class="book-name margin-top-4">--</p>
+                        <p class="gray font-12 margin-top-8">--</p>
+                    </li>
+                    <li class="f-left JS_detail">
+                        <p><img src="/images/wait-load.jpg"></p>
+                        <p class="book-name margin-top-4">--</p>
+                        <p class="gray font-12 margin-top-8">--</p>
+                    </li>
+                    <li class="f-left JS_detail">
+                        <p><img src="/images/wait-load.jpg"></p>
+                        <p class="book-name margin-top-4">--</p>
+                        <p class="gray font-12 margin-top-8">--</p>
+                    </li>
+                    <li class="f-left JS_detail">
+                        <p><img src="/images/wait-load.jpg"></p>
+                        <p class="book-name margin-top-4">--</p>
+                        <p class="gray font-12 margin-top-8">--</p>
+                    </li>
+                    <li class="f-left JS_detail">
+                        <p><img src="/images/wait-load.jpg"></p>
+                        <p class="book-name margin-top-4">--</p>
+                        <p class="gray font-12 margin-top-8">--</p>
+                    </li>
+                </ul>
+                <p class="margin-top-15 text-center">
+                    <a href="/view/bookList.html?type=7" class="gray">查看更多</a>
+                </p>
+            </div>
+        </div>
+        <div class="book-list">
+            <div class="title">
+                <i class="icon icon-jq-recommend"></i><span class="font-16 margin-left-5">精品推荐</span>
+            </div>
+            <div class="bg-white padding-bottom-15">
+                <ul id="JS_fine_list" class="warpper clearfix">
+                    <li class="f-left JS_detail">
+                        <p><img src="/images/wait-load.jpg"></p>
+                        <p class="book-name margin-top-4">--</p>
+                        <p class="gray font-12 margin-top-8">--</p>
+                    </li>
+                    <li class="f-left JS_detail" >
+                        <p><img src="/images/wait-load.jpg"></p>
+                        <p class="book-name margin-top-4">--</p>
+                        <p class="gray font-12 margin-top-8">--</p>
+                    </li>
+                    <li class="f-left JS_detail">
+                        <p><img src="/images/wait-load.jpg"></p>
+                        <p class="book-name margin-top-4">--</p>
+                        <p class="gray font-12 margin-top-8">--</p>
+                    </li>
+                    <li class="f-left JS_detail">
+                        <p><img src="/images/wait-load.jpg"></p>
+                        <p class="book-name margin-top-4">--</p>
+                        <p class="gray font-12 margin-top-8">--</p>
+                    </li>
+                    <li class="f-left JS_detail">
+                        <p><img src="/images/wait-load.jpg"></p>
+                        <p class="book-name margin-top-4">--</p>
+                        <p class="gray font-12 margin-top-8">--</p>
+                    </li>
+                    <li class="f-left JS_detail">
+                        <p><img src="/images/wait-load.jpg"></p>
+                        <p class="book-name margin-top-4">--</p>
+                        <p class="gray font-12 margin-top-8">--</p>
+                    </li>
+                </ul>    
+                <p class="margin-top-15 text-center">
+                    <a href="javascript:;" id="JS_change" class="gray font-12">
+                        <i class="icon icon-change margin-right-5"></i><span class="red">换一换</span>
+                    </a>
+                </p>
+            </div>
+            <div id="wlb">微喇叭提供技术支持</div>
+        </div>
+    </div>
+    <!-- /content -->
+    <!-- footer -->
+    <footer id="bw-footer" class="w-row">
+        <a href="#" class="f-left active">
+            <i class="icon icon-nav icon-nav-home"></i>
+            <p class="margin-top-2">首页</p>
+        </a>
+        <a href="/view/advancedSearch.html" class="f-left">
+            <i class="icon icon-nav icon-nav-search"></i>
+            <p class="margin-top-2">高级搜索</p>
+        </a>
+        <a href="/view/category.html" class="f-left">
+            <i class="icon icon-nav icon-nav-category"></i>
+            <p class="margin-top-2">书目分类</p>
+        </a>
+        <a href="/view/cart.html" class="f-left">
+            <i class="icon icon-nav icon-nav-cart"></i>
+            <p class="margin-top-2">购物车</p>
+        </a>
+        <a href="/view/user.html" class="f-left">
+            <i class="icon icon-nav icon-nav-user"></i>
+            <p class="margin-top-2">个人中心</p>
+        </a>
+    </footer>
+    <!-- /footer -->
+    <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+    <script type="text/javascript" src="/libs/requirejs/require.js" data-main="/script/entry"></script>
+    <script type="text/javascript" src="/script/index.js"></script>
+</body>
+
+</html>

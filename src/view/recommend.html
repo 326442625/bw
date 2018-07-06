@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <title>热销推荐</title>
+    @@include('./public/head.html')
+</head>
+ 
+<body>
+    <div id="recommend" class="recommend-warpper">
+        <div id="JS_recommend_tab" class="nav-warpper bg-white border-bottom">
+             <div class="swiper-container">
+                <ul class="nav swiper-wrapper clearfix">
+                    <li class="item"><a href="javascript:;" class="active" flooker="all">事业部推荐<span></span></a></li>
+                    <li class="item"><a href="javascript:;" flooker="2">综合推荐<span></span></a></li>
+                    <li class="item"><a href="javascript:;" flooker="3">文教推荐<span></span></a></li>
+                </ul>
+             </div>
+             <a href="javascript:;" id="JS_drap" class="nav-link"><i class="icon icon-down"></i></a>
+        </div>
+        <ul class="menu JS_menu">
+               <li class="border-bottom"><a href="javascript:;">事业部推荐<span></span></a></li>
+               <li class="border-bottom"><a href="javascript:;">综合推荐<span></span></a></li>
+               <li class="border-bottom"><a href="javascript:;">文教推荐<span></span></a></li>
+           </ul>
+        <!-- content -->
+        <div id="JS_list" class="warpper bg-white disn">
+            <!-- <div class="card">
+                <i class="icon icon-recommend"></i>
+                <p class="margin-bottom-5">
+                    <span class="font-16 margin-right-5">绘本基地宣传</span>
+                    <span class="gray font-12">(共30本)</span>
+                </p>
+                <p class="gray font-12">2018-05-18</p>
+            </div> -->
+        </div>
+        <div id="JS_loading_more" class="w-loading-more margin-f-10"><span class="JS_loading"><i class="icon icon-loading margin-right-5"></i>加载更多</span><span class="JS_loaded disn">加载完毕</span></div>
+        <div id="JS_empty" class="disn">
+            <div class="empty-status text-center">
+                <img src="/images/empty-order.png">
+                <p class="gray">没有相关数据~</p>
+            </div>
+        </div>
+        <div id="wlb" class="disn">微喇叭提供技术支持</div>
+        <!-- /content -->
+    </div>
+    <script type="text/javascript" src="/libs/requirejs/require.js" data-main="/script/entry"></script>
+    <script type="text/javascript" src="/script/recommend.js"></script>
+</body>
+
+</html>

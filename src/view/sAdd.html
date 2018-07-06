@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <title>添加订单</title>
+    @@include('./public/head.html')
+</head>
+
+<body>
+    <!-- content -->
+    <div id="bw-add">
+        <div>
+            <div class="bg-gray line-36 padding-lr-12">图书信息</div>
+            <div class="line-44 padding-lr-12 bg-white border-bottom">
+                <span>书号</span>
+                <div class="f-right input-warpper search-warpper">
+                    <input class="text-right" name="JS_book_num" type="text" autocomplete="off">
+                </div>
+            </div>
+            <div class="line-44 padding-lr-12 bg-white border-bottom">
+                <span>书名</span>
+                <div class="f-right input-warpper search-warpper">
+                    <input class="text-right" name="JS_book_name" placeholder="请输入图书名称(最多显示20字符)" type="text" autocomplete="off">
+                </div>
+            </div>
+            <div class="line-44 padding-lr-12 bg-white border-bottom">
+                <span>定价</span>
+                <div class="f-right input-warpper search-warpper">
+                    <input class="text-right" name="JS_book_price" placeholder="元" type="text" autocomplete="off">
+                </div>
+            </div>
+            <div class="line-44 padding-lr-12 bg-white">
+                <span>折扣</span>
+                <div class="f-right input-warpper search-warpper">
+                    <input class="text-right" name="JS_book_kc" readonly value="100%" type="text" autocomplete="off">
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="bg-gray line-36 padding-lr-12">数量</div>
+            <div class="padding-lr-12 bg-white border-bottom clearfix">
+                <span class="line-44">征订</span>
+                <div class="f-right">
+                    <div class="number f-left" type="2">
+                        <span class="decrease f-left"></span><input id="JS_sub_number" class="f-left" type="tel" value="1"><span class="increase f-left"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer w-row bg-white">
+                <a href="javascript:;" id="JS_submit" class="f-right text-center white bg-red width-160 font-15">提交</a>
+                <div id="JS_total_warpper" class="f-right font-12 margin-right-10">
+                      <p class="margin-top-8">总码洋：¥<span id="JS_total_price">0.00</span></p>
+                      <p>总实洋：<span class="red">¥<span id="JS_total_q" class="font-16">0</span><span id="JS_total_h">.00</span></span></p>
+                </div>
+        </div>
+    </div>
+    <!-- /content -->
+    <script type="text/javascript" src="/libs/requirejs/require.js" data-main="/script/entry"></script>
+    <script type="text/javascript" src="/script/sAdd.js"></script>
+</body>
+
+</html>

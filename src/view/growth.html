@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>我的成长值</title>
+    @@include('./public/head.html')
+</head>
+
+<body>
+    <!-- content -->
+    <div id="bw-growth">
+        <div class="header">
+            <i id="JS_grade" class="white grade font-16">1</i>
+            <span id="JS_grade_name" class="white font-12">-普通会员-</span>
+            <img id="JS_user_img" src="/images/wait-load.jpg">
+            <p class="white" id="JS_value">我的成长值：0</p>
+            <div class="w-row growth-nav text-center">
+                <a href="javascript:;" class="white font-13 active w-col-12 JS_nav">
+                    记录
+                    <i class="icon icon-triangle"></i>
+                </a>
+                <a href="javascript:;" class="white font-13 w-col-12 JS_nav">
+                    规则
+                    <i class="icon icon-triangle"></i>
+                </a>
+            </div>
+        </div>
+        <div class="record JS_content">
+           <div id="JS_record_list">
+    
+           </div>
+           <div id="JS_loading_more" class="w-loading-more"><span class="JS_loading"><i class="icon icon-loading margin-right-5"></i>加载更多</span><span class="JS_loaded disn">加载完毕</span></div>
+        </div>
+        <div class="rule JS_content bg-white">
+            <h3 id="JS_rule">&nbsp;</h3>
+            <div class="margin-top-10 content-warpper JS_content_dec"></div>
+        </div>
+    </div>
+    <!-- /content -->
+    <script type="text/javascript" src="/libs/requirejs/require.js" data-main="/script/entry"></script>
+    <script type="text/javascript" src="/script/growth.js"></script>
+</body>
+
+</html>
