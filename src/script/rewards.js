@@ -27,10 +27,7 @@ require(["entry"], function (CONST) {
                         }else{
                             past.push(el)
                         }
-                    }) 
-                    console.log('未开始',notStart);
-                    console.log('进行中',processing);
-                    console.log('结束',past);
+                    })  
                     callBack(processing,1);
                     callBack(past,2);
                     callBack(notStart,3);

@@ -41,8 +41,7 @@ require(["entry"], function (CONST) {
                 type: 'get',
                 url: '/me',
                 async:false,
-                success: function (data) {
-                    console.log(data);
+                success: function (data) { 
                     $userImg.attr('src',data.data.profile.avatar);
                     $userImg.data('id',data.data.user_info.id);
                     $userImg.data('name',data.data.user_info.name); 

@@ -688,7 +688,7 @@ require(["entry"], function (CONST) {
                                             <a href="javascript:;" class="JS_discount coupon '+discount1Class+' red font-12 margin-right-5">' + parseFloat(discount1) / 10 + '折</a><a href="javascript:;" class="JS_discount coupon coupon-2 red font-12">' + parseFloat(discount2) / 10 + '折</a><i class="icon icon-marketing margin-left-4 ' + iconMark + '" >&nbsp;</i>\
                                         </p>\
                                         <p class="sku grayc font-12">\
-                                            <span>定价:<span class="red">￥<strong class="font-14">' + $.getPrice(parseFloat(el.H_price).toFixed(2)).qPrice + '</strong>' + $.getPrice(parseFloat(el.H_price).toFixed(2)).hPrice + '</span></span><span class="store margin-left-5">库存<span data-stock="' + parseInt(parseFloat(hStock)) + '" class="JS_stock">' + parseInt(parseFloat(hStock)) + '</span>本</span><a href="javascript:;" class="JS_check f-right check" id="' + el.H_id + '"><i class="icon icon-check"></i>\</a>\
+                                            <span>定价:<span class="red">￥<strong class="font-14">' + $.getPrice(parseFloat(el.H_price).toFixed(2)).qPrice + '</strong>' + $.getPrice(parseFloat(el.H_price).toFixed(2)).hPrice + '</span></span><span class="store margin-left-5">库存<span data-stock="' + parseInt(parseFloat(hStock)) + '" class="JS_stock">' + parseInt(parseFloat(hStock)) + '</span></span><a href="javascript:;" class="JS_check f-right check" id="' + el.H_id + '"><i class="icon icon-check"></i>\</a>\
                                         </p>\
                                         <p class="disn font-12 black-a">' + el.h_publish + '</p>\
                                     </div>\

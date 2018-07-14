@@ -564,8 +564,7 @@ define(["entry", "clip"], function (CONST, Clipboard) {
               isPageHide = true; 
             }); 
         }
-    })  
-    console.log('v2');
+    })   
     // 微信授权
     function wxAuth() {
         var wxUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + CONST.BaseAppId + '&redirect_uri=' + CONST.BaseUrl + '/view/loginCallBack.html' + '&response_type=code&scope=snsapi_userinfo&state=b017886320c8628f14e7d9367bfdeea6&connect_redirect=1#wechat_redirect';

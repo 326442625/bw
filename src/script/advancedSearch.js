@@ -4,6 +4,7 @@
 require(["entry"], function (CONST) {
     require(["common", "date"], function ($) {
         $(function () {
+            $.refresh();
             var Accordion = function (el, multiple, link) {
                 this.el = el || {};
                 this.multiple = multiple || false;
