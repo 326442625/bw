@@ -1,18 +1,18 @@
 <!DOCTYPE HTML>
 <html>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+<head> 
     <title>博文资讯</title>
     @@include('./public/head.html')
 </head>
 
 <body>
     <!-- content -->
-    <div id="news">
-        <div id="JS_list"></div>
-        <div id="JS_loading_more" class="w-loading-more"><span class="JS_loading"><i class="icon icon-loading margin-right-5"></i>加载更多</span><span class="JS_loaded disn">加载完毕</span></div>
+    <div id="mescroll" class="mescroll"> 
+        <div id="news" class="disn">
+            <div id="JS_list"></div>
+            <div id="JS_loading_more" class="w-loading-more"><span class="JS_loading"><i class="icon icon-loading margin-right-5"></i>加载更多</span><span class="JS_loaded disn">加载完毕</span></div>
+        </div>
     </div>
     <!-- /content -->
     <script type="text/javascript" src="/libs/requirejs/require.js" data-main="/script/entry"></script>

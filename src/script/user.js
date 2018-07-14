@@ -31,7 +31,7 @@ require(["entry"], function (CONST) {
         var $invoiceLink=$(".JS_invoice_link");
         var $invoiceAllLink=$(".JS_invoice_all_link");
         var isSubmit=true;
-        var growthData={};
+        var growthData={}; 
         // 请求获得用户信息
         $.isLogin();
         $.getData({
@@ -42,7 +42,7 @@ require(["entry"], function (CONST) {
                 $shopName.html(data.data.bookshop_info.Wkers_Name);
                 $attention.html(data.data.attention_num);
                 $growth.html(data.data.profile.growth_value);
-                $grade.addClass('icon-grade'+data.data.my_level.rank_image_path.replace(/[^0-9]/ig,""));
+                $grade.css({'background':'url('+$.getImg(data.data.my_level.rank_image_path)+')','background-size':'100% 100%'});
                 $grade.fadeIn();
                 $tracks.html(data.data.tracks_num);
                 $orderAllNum.html(data.data.order_all_num);
@@ -57,7 +57,7 @@ require(["entry"], function (CONST) {
                 data.data.user_info.is_master ? $isMaster.fadeIn() : $isMaster.fadeOut();
                 growthData.rankName=data.data.my_level.rank_name;
                 growthData.value=data.data.profile.growth_value;
-                growthData.rank=data.data.my_level.rank_image_path.replace(/[^0-9]/ig,"");
+                growthData.rank=data.data.my_level.rank_name.replace(/[^0-9]/ig,"");
                 growthData.userImg=data.data.profile.avatar;
                 $.setKey('bwGrowthData',JSON.stringify(growthData));
                 $circle.each(function(){

@@ -13,6 +13,7 @@ require(["entry"], function (CONST) {
             var $totalPrice = $("#JS_total_price");
             var $totalQPrice = $("#JS_total_q_price");
             var $totalHPrice = $("#JS_total_h_price");
+            var $emptyStatus=$(".empty-status");
             var $fj=$("#JS_fj"); 
             var fCode = $.getParam('fCode');
             var shopName = $.getParam('shopName', decodeURI(location.href));
@@ -47,7 +48,8 @@ require(["entry"], function (CONST) {
                                 <p class="black-4 line-22">¥' + parseFloat(el.fPrice).toFixed(2) + '<span class="JS_discount '+discountClass+' gray font-12">(' + parseInt(fZk) / 10 + '折)</span><span class="f-right font-12">×' + parseInt(parseFloat(el.fQty)) + '</span></p>\
                             </li>'
                 })
-                $list.html(html);
+                $emptyStatus.hide();
+                $list.append(html);
                 $fCode.html(invoiceData.fCode);
                 $time.html(invoiceTime.substring(0, 19));
                 $shopName.html(shopName);

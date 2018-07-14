@@ -16,10 +16,8 @@ require(["entry"], function (CONST) {
             var $swiper = $("#JS_warpper");
             var $change = $("#JS_change");
             var $notice = $("#JS_notice");
-            var $rank = $(".JS_rank");
-            var loadingHotStart = true;
+            var $rank = $(".JS_rank"); 
             // 请求获得首页信息
-            
             $.isLogin();
             $.getData({
                 type: 'get',
@@ -27,7 +25,7 @@ require(["entry"], function (CONST) {
                 beforeLoading: {
                     el: $home
                 },
-                success: function (data) {      
+                success: function (data) { 
                      // 扫一扫
                      $.getData({
                         type: 'post',
@@ -57,7 +55,6 @@ require(["entry"], function (CONST) {
                             callBackMsg(data.data, $returnInfo);
                         }
                     })             
-                    
                     callBackRank(data.data.rank_bowen_quanguo, $nationRank, 'd-blue', 1);
                     callBackRank(data.data.rank_bowen_publish_hot, $publishRank, 'l-blue', 2);
                     callBackRank(data.data.rank_new_book_sub, $subscriptionBook, 'p-blue', 3);
@@ -101,7 +98,7 @@ require(["entry"], function (CONST) {
                 var html = '';
                 $.each(data, function (index, el) {
                     html += '<div class="swiper-slide">\
-                            <a href="javascript:;" class="JS_banner_link" data-url="'+el.redirect_url+'"><img class="opacity-0" src="' + $.getImg(el.pic_src) + '" width="100%" height="100%"></a>\
+                            <a href="javascript:;" class="JS_banner_link" data-title="'+el.title+'" data-url="'+el.redirect_url+'"><img class="opacity-0" src="' + $.getImg(el.pic_src) + '" width="100%" height="100%"></a>\
                         </div>'
                 })
                 dom.html(html);
@@ -115,7 +112,7 @@ require(["entry"], function (CONST) {
                 })
                 var $link=dom.find('.JS_banner_link');
                 $link.click(function(){
-                    var url=$(this).data('url');
+                    var url=$(this).data('url'); 
                     if(url){
                         location.href=url;
                     }

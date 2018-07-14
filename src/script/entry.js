@@ -13,7 +13,8 @@ require.config({
         entry: "/script/entry.js",
         common: "/script/common.js",
         qrcode:"/libs/qrcode/qrcode.js",
-        clip:"/libs/clip/clipboard.js" 
+        clip:"/libs/clip/clipboard.js",
+        mescroll:"/libs/mescroll/mescroll.js"
     },
     shim:{
         common:['jquery','layer'],

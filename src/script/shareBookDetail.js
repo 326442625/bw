@@ -172,7 +172,7 @@ require(["entry"], function (CONST) {
             })
             // 分享
             $share.click(function () {
-                $.share();
+                $.share({});
             })
 
             function shareCallBack(data) {

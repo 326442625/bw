@@ -8,24 +8,24 @@ require(["entry"], function (CONST) {
             var $nav = $("#JS_nav");
             var $content = $("#JS_content");
             var $total = $("#JS_total");
-            var $sidebar=$("#sidebar");
+            var $sidebar = $("#sidebar");
             var $right = $("#JS_right");
             var listData = [];
-            var bwHistoryData={};   
-            
-            if (history.state && $.getKey('bwCategory')) {
-                bwHistoryData = JSON.parse($.getKey('bwCategory')); 
+            var bwHistoryData = {}; 
+            if (history.state && $.getKey('bwCategory')&&location.href.indexOf('backGet')!==-1) {
+                bwHistoryData = JSON.parse($.getKey('bwCategory'));
                 listData = bwHistoryData.listData;
-                sidebarTop=bwHistoryData.sidebarTop||0;
-                rightTop=bwHistoryData.rightTop||0;
-                historyIndex=bwHistoryData.index||0;
-                $category.show(); 
+                sidebarTop = bwHistoryData.sidebarTop || 0;
+                rightTop = bwHistoryData.rightTop || 0;
+                historyIndex = bwHistoryData.index || 0;
+                $category.show();
                 callback();
-                setTimeout(function() {
+                setTimeout(function () {
                     $(".JS_item").eq(historyIndex).trigger('click');
                     $sidebar.scrollTop(sidebarTop);
                     $right.scrollTop(rightTop);
                 }, 0);
+                history.replaceState({}, null, '#');
             } else {
                 // 请求获得分类信息
                 $.isLogin();
@@ -38,12 +38,12 @@ require(["entry"], function (CONST) {
                     success: function (data) {
                         listData = data.data.bw.children;
                         callback();
-                        // history.pushState({}, null, '');
-                        bwHistoryData.listData=listData;
+                        bwHistoryData.listData = listData;
                         $.setKey('bwCategory', JSON.stringify(bwHistoryData));
                     }
                 })
             }
+
             function callback() {
                 var html = '';
                 $.each(listData, function (index, el) {
@@ -76,15 +76,15 @@ require(["entry"], function (CONST) {
                 $content.empty().html(html);
                 $total.html('共有' + sum + '本');
                 $(this).addClass('active').siblings('li').removeClass('active');
-                bwHistoryData.index=index;
-                $.setKey('bwCategory', JSON.stringify(bwHistoryData)); 
-            })
-            $sidebar.scroll(function(){
-                bwHistoryData.sidebarTop=$sidebar.scrollTop();
+                bwHistoryData.index = index;
                 $.setKey('bwCategory', JSON.stringify(bwHistoryData));
             })
-            $right.scroll(function(){
-                bwHistoryData.rightTop=$right.scrollTop();
+            $sidebar.scroll(function () {
+                bwHistoryData.sidebarTop = $sidebar.scrollTop();
+                $.setKey('bwCategory', JSON.stringify(bwHistoryData));
+            })
+            $right.scroll(function () {
+                bwHistoryData.rightTop = $right.scrollTop();
                 $.setKey('bwCategory', JSON.stringify(bwHistoryData));
             })
             $content.on('click', '.JS_link', function () {
@@ -92,6 +92,7 @@ require(["entry"], function (CONST) {
                 var param = {
                     H_type: typeCode
                 }
+                history.replaceState({}, null, '#backGet');
                 location.href = "/view/bookList.html?type=2&searchVal=" + JSON.stringify(param);
             })
         })

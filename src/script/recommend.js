@@ -19,6 +19,7 @@ require(["entry"], function (CONST) {
 
       function getData(fLooker) {
         var $loadingMore = $("#JS_loading_more");
+        var $loaded = $(".JS_loaded", $loadingMore);
         var param = '';
         $.each(fLooker, function (index, el) {
           param = param + 'fLooker[' + index + ']=' + el + '&';
@@ -27,6 +28,7 @@ require(["entry"], function (CONST) {
         $list.hide();
         $wlb.hide();
         $loadingMore.hide();
+        $loaded.hide().prev().show();
         $(window).unbind('scroll');
         $.getData({
           type: 'get',

@@ -6,23 +6,53 @@ require(["entry"], function (CONST) {
         $(function () {
             var $ongoing=$(".ongoing");
             var $end=$(".end");
+            var $noStart=$(".no-start")
             var $rewards=$("#rewards");
+            var processing=[];
+            var past=[];
+            var notStart=[];
             // 请求获得活动列表
             $.isLogin();
             $.getData({
                 type: 'get',
-                url: '/activity',
+                url: '/activity_list',
                 beforeGetLoading:true,
                 success: function (data) {
-                    callBack(data.data.processing,1);
-                    callBack(data.data.past,2);
+                    var nowDate=new Date().getTime(); 
+                    $.each(data.data,function(index,el){ 
+                        if(el.start_time*1000>nowDate){
+                            notStart.push(el);
+                        }else if(el.start_time*1000<=nowDate&&nowDate<el.end_time*1000){
+                            processing.push(el);
+                        }else{
+                            past.push(el)
+                        }
+                    }) 
+                    console.log('未开始',notStart);
+                    console.log('进行中',processing);
+                    console.log('结束',past);
+                    callBack(processing,1);
+                    callBack(past,2);
+                    callBack(notStart,3);
                 }
             })
             function callBack(data,type) {
-                var $dom=type==1?$ongoing:$end;
-                var status=type==1?'进行中':'已结束';
-                var statusIcon=type==1?'ing':'end';
-                var showGo=type==1?'':'disn';
+                if(type==1){
+                    $dom=$ongoing;
+                    status='进行中';
+                    statusIcon='ing';
+                    showGo='';
+                }else if(type==2){
+                    $dom=$end;
+                    status='已结束';
+                    statusIcon='end';
+                    showGo='disn';
+                } else{
+                    $dom=$noStart;
+                    status='未开始';
+                    statusIcon='end';
+                    showGo='disn'; 
+                }
                 var html = '';
                 if (data.length==0) {
                     html += '<div class="margin-bottom-25">\
@@ -47,7 +77,7 @@ require(["entry"], function (CONST) {
                                         <p class="act-title">'+el.title+'</p>\
                                     </div>\
                                     <div class="time">\
-                                        <p class="white font-12">活动时间：'+$.getTime(el.created_at)+'-'+$.getTime(el.end_time)+'</p>\
+                                        <p class="white font-12">活动时间：'+$.timeStamp(el.start_time*1000)+'-'+$.timeStamp(el.end_time*1000)+'</p>\
                                     </div>\
                                 </div>\
                                 <a href="javascript:;" class="'+showGo+' icon icon-go white font-16"><strong>GO</strong>\

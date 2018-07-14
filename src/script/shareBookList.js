@@ -125,7 +125,7 @@ require(["entry"], function (CONST) {
                 })
             })
             $share.click(function(){
-                $.share();
+                $.share({});
             }) 
             // 2. 分享接口
             $.getData({

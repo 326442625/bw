@@ -48,6 +48,7 @@ require(["entry"], function (CONST) {
                                     location.href='/view/user.html';
                                 }
                             });
+                            flag=true;
                         },
                         error:function(){
                             flag=true;

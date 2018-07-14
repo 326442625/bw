@@ -372,7 +372,7 @@ gulp.task('server-dev', function() {
 function server(dir) {
     $.connect.server({
         root : dir,
-        port:'8001',
+        port:'8002',
         host:'192.168.2.168',
         livereload : false
     });

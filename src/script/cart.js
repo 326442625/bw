@@ -59,6 +59,7 @@ require(["entry"], function (CONST) {
                     var  discountClass=el.book.discount_1?'':'no-show';
                     var  stock=el.book.STOCK?parseInt(parseFloat(el.book.STOCK)):10000;
                     var  stockClass=el.book.STOCK?'':'no-show';
+                    var mImg=el.book?el.book.H_images:el.fH_id+'.jpg';
                     html += '<div class="cart-inner clearfix" id="' + el.id + '">\
                                    <div class="f-left checkbox-warpper">\
                                        <label class="checkbox margin-right-8">\
@@ -70,7 +71,7 @@ require(["entry"], function (CONST) {
                                    <div class="f-left padding-bottom-12">\
                                        <div class="info clearfix">\
                                            <div class="img-warpper f-left text-center">\
-                                               <img class="opacity-0" src="'+CONST.BaseBookImg+'/' + el.book.H_id + '.jpg_180x180" height="100%">\
+                                               <img class="opacity-0" src="'+CONST.BaseBookImg+'/' + mImg + '_180x180" height="100%">\
                                            </div>\
                                            <div class="f-right">\
                                                <p class="title"><a href="/view/bookDetail.html?bookId='+el.book_id+'">' + el.book.H_name + '</a></p>\

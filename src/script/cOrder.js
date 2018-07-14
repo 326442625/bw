@@ -58,13 +58,14 @@ require(["entry"], function (CONST) {
                     var numbers = (parseInt(parseFloat(el.fH_qty)) + parseInt(parseFloat(el.fH_zdqty)));
                     var totalPrice = parseFloat(el.fH_price).mul(numbers);
                     var oRealPrice = totalPrice.mul(fH_zk);
+                    var mImg=el.book?el.book.H_images:el.fH_id+'.jpg';
                     oRealPrice = oRealPrice / 100;
                     html += '<div class="cart-inner" sn="' + sn + '" id=' + el.id + ' isbn="' + el.fH_isbn + '" data-name="' + el.fH_name + '">\
                                     <div class="padding-bottom-12 border-bottom">\
                                         <div class="info clearfix">\
                                           <a href="/view/bookDetail.html?bookId='+el.fH_id+'">\
                                             <div class="img-warpper f-left text-center">\
-                                                <img src="' + CONST.BaseBookImg + '/' + el.fH_id + '.jpg_180x180" height="100%">\
+                                                <img src="' + CONST.BaseBookImg + '/' + mImg + '_180x180" height="100%">\
                                             </div>\
                                             <div class="f-right">\
                                                 <p class="title">' + el.fH_name + '</p>\

@@ -4,7 +4,7 @@
 
 //module
 
-define(["entry", "clip"], function (CONST, Clipboard) {
+define(["entry", "clip"], function (CONST, Clipboard) {   
     $.extend({
         getKey: function (key) { //获取本地存储数据
             return localStorage.getItem(key);
@@ -230,7 +230,7 @@ define(["entry", "clip"], function (CONST, Clipboard) {
         getTime: function (time) {
             return time.substring(0, 10).replace(/-/g, '/');
         },
-        loadMore: function (data, url, callBack, type, invoicesType) {
+        loadMore: function (data, url, callBack, type, invoicesType) { 
             var $loadingMore = $("#JS_loading_more");
             var loadingStart;
             loadMore(data);
@@ -264,11 +264,11 @@ define(["entry", "clip"], function (CONST, Clipboard) {
                             pageInfo = data.return_back;
                             break;
                     }
-                }
+                } 
                 var $loading = $(".JS_loading", $loadingMore);
                 var $loaded = $(".JS_loaded", $loadingMore);
                 $loadingMore.show();
-                if (pageInfo.current_page == pageInfo.last_page) {
+                if (pageInfo.current_page == pageInfo.last_page) { 
                     if (type == 'click' || pageInfo.current_page == 1) {
                         $loadingMore.hide();
                     } else {
@@ -279,7 +279,7 @@ define(["entry", "clip"], function (CONST, Clipboard) {
                 loadingStart = true;
                 $loadingMore.data('next', parseInt(pageInfo.current_page) + 1);
             }
-            if (type == 'click') {
+            if (type == 'click') { 
                 var $loading = $(".JS_loading", $loadingMore);
                 $loading.prev().hide();
                 $loading.click(function () {
@@ -304,8 +304,32 @@ define(["entry", "clip"], function (CONST, Clipboard) {
                     }
                 })
                 return false;
+            } 
+            if(type == 'mescroll'){
+                var $mescroll=$("#mescroll"); 
+                $mescroll.scroll(function () { 
+                    var oHeight = $(window).scrollTop() + $(window).height() + 50;
+                    var oTop = $loadingMore.offset().top; 
+                    if (oHeight >= oTop && loadingStart) {
+                        var nextPage = $loadingMore.data('next');
+                        var mNextUrl = '/' + url + '?page=' + nextPage;
+                        if (url.indexOf('?') !== -1) {
+                            mNextUrl = '/' + url + '&page=' + nextPage;
+                        }
+                        loadingStart = false;
+                        $.getData({
+                            type: 'get',
+                            url: mNextUrl,
+                            success: function (data) {
+                                callBack(data);
+                                loadMore(data.data);
+                            }
+                        })
+                    }
+                })
+                return false;
             }
-            $(window).scroll(function () {
+            $(window).scroll(function () { 
                 var oHeight = $(window).scrollTop() + $(window).height() + 50;
                 var oTop = $loadingMore.offset().top;
                 if (oHeight >= oTop && loadingStart) {
@@ -482,7 +506,7 @@ define(["entry", "clip"], function (CONST, Clipboard) {
         share: function (param) {
             var $body = $('body');
             var oTop=$(window).scrollTop()||0; 
-            var html = '<div id="JS_share_mask" class="w-mask share-mask disn">\
+            var html = '<div id="JS_share_mask" class="w-mask2 share-mask disn">\
                         <div class="share-info white">\
                             <p>1.点击右上角；</p>\
                             <p>2.发送给朋友或分享到朋友圈</p>\
@@ -490,7 +514,7 @@ define(["entry", "clip"], function (CONST, Clipboard) {
                         <i class="icon icon-share"></i>\
                     </div>'
             if(param.type=='check'){
-                html = '<div id="JS_share_mask" class="w-mask share-mask disn">\
+                html = '<div id="JS_share_mask" class="w-mask2 share-mask disn">\
                         <div class="share-info white">\
                             <p>1.点击右上角；</p>\
                             <p>2.在浏览器中打开</p>\
@@ -540,7 +564,8 @@ define(["entry", "clip"], function (CONST, Clipboard) {
               isPageHide = true; 
             }); 
         }
-    }) 
+    })  
+    console.log('v2');
     // 微信授权
     function wxAuth() {
         var wxUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + CONST.BaseAppId + '&redirect_uri=' + CONST.BaseUrl + '/view/loginCallBack.html' + '&response_type=code&scope=snsapi_userinfo&state=b017886320c8628f14e7d9367bfdeea6&connect_redirect=1#wechat_redirect';

@@ -9,12 +9,17 @@ require(["entry"], function (CONST) {
             var categoryId=$.getParam('catId');
             var $title=$("title");
             var $news = $("#news-detail"); 
-            if(categoryId=='2'){
+            var bwBanner=$.getKey('bwBanner');
+            if(categoryId=='1'){
+                $title.html('博文资讯');
+            }else if(categoryId=='2'){
                 $title.html('博文退货通知');
+            }else{
+                $title.html('博文广告'); 
             } 
             if(id=='2'){
                 $title.html('博文服务协议');
-            }
+            } 
             // 请求获得咨询详情
             $.isLogin();
             $.getData({
@@ -50,10 +55,13 @@ require(["entry"], function (CONST) {
                             </div>\
                             <div class="bg-white margin-top-20 line-50 padding-left-12 '+annexClass+'">\
                                 <i class="icon icon-accessory"></i>\
-                                <span class="font-16 black">附件：</span><a href="/view/pdf.html?pdf='+$.getImg(data.file_url)+'" class="gray dec font-15">' + data.file_url + '</a>\
+                                <span class="font-16 black">附件：</span><a href="'+$.getImg(data.file_url)+'" class="gray dec font-15">' + data.file_title + '</a>\
                             </div>\
-                        <div id="wlb">微喇叭提供技术支持</div>'
+                        <div id="wlb"><a href="http://www.weilaba.com">微喇叭提供技术支持</a></div>'
                 $news.html(html);
+                var $fixTop=$('.fixed-top'); 
+                var $warpper=$('.warpper'); 
+                $warpper.css('padding-top',$fixTop.outerHeight());
             }
         })
     });

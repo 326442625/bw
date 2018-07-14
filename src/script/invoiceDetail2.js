@@ -24,11 +24,13 @@ require(["entry"], function (CONST) {
             function getData() {
                 var dataType = {};
                 var $loadingMore = $("#JS_loading_more");
+                var $loaded = $(".JS_loaded", $loadingMore);
                 var oHtml=' <div class="empty-status text-center line-46 border-bottom padding-bottom-12">\
                                 <i class="icon icon-loading"></i>\
                             </div>'
                 $list.html(oHtml);
                 $loadingMore.hide();
+                $loaded.hide().prev().show();
                 $(window).unbind('scroll');
                 $.getData({
                     type: 'get',
@@ -134,15 +136,19 @@ require(["entry"], function (CONST) {
                 funs: [function () {
                     getData(0);
                     type=0;
+                    $tab.find('a').eq(0).addClass('active');
                 }, function () {
                     getData(1);
                     type=1;
+                    $tab.find('a').eq(1).addClass('active');
                 }, function () {
                     getData(2);
                     type=2;
+                    $tab.find('a').eq(2).addClass('active');
                 }, function () {
                     getData(3);
                     type=3;
+                    $tab.find('a').eq(3).addClass('active');
                 }]
             });
         })

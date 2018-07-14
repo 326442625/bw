@@ -193,20 +193,25 @@ require(["entry"], function (CONST) {
                     layer.msg('请选择书单');
                     return false;
                 }
-                $.getData({
-                    type: 'delete',
-                    url: '/book_list_share',
-                    param: {
-                        list_id: idArr
-                    },
-                    success: function (data) {
-                        layer.msg('删除成功', {
-                            time: 2000
-                        }, function () {
-                            location.href = '/view/shareBook.html';
-                        });
-                    }
-                })
+                layer.confirm('确定删除书单？', {
+                    btn: ['确定','取消'] //按钮
+                  }, function(){
+                    $.getData({
+                        type: 'delete',
+                        url: '/book_list_share',
+                        param: {
+                            list_id: idArr
+                        },
+                        success: function (data) {
+                            layer.msg('删除成功', {
+                                time: 2000
+                            }, function () {
+                                location.href = '/view/shareBook.html';
+                            });
+                        }
+                    })
+                  }) 
+               
             })
             // 跳转到分享书单
             $list.on('click','.JS_link',function(e){ 

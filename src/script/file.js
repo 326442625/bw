@@ -5,6 +5,9 @@ require(["entry"], function (CONST) {
     require(["common"], function ($) {
         $(function () {
             var fileUrl = 'http://123.207.227.113:88/netbook/upfiles/'+$.getParam('file');
+            if(fileUrl.indexOf('https://bwst-cdn1.weilaba.com.cn')!==-1){
+                fileUrl=$.getParam('file');
+            }
             var $check = $("#JS_check");
             //判断是否是微信浏览器的函数
             function isWeiXin() {

@@ -2,30 +2,51 @@
  * Created by luoyilin
  */
 require(["entry"], function (CONST) {
-    require(["common"], function ($) {
+    require(["common","mescroll"], function ($,MeScroll) {
         $(function () {
+            var $news = $("#news");
             var $list = $("#JS_list");
             var $title=$("title");
+            var $mescroll=$("#mescroll"); 
             var categoryId=$.getParam('catId');
             if(categoryId=='2'){
                 $title.html('博文退货通知');
             }
             // 请求获得咨询列表
-            $.isLogin();
-            $.getData({
-                type: 'get',
-                url: '/article_list?sort_id='+categoryId,
-                beforeLoading:{
-                    el:$list
-                },
-                success: function (data) {
-                    var oReturn=callBack(data);
-                    if(oReturn){
-                        $.loadMore(data.data,'article_list?sort_id='+categoryId,callBack);
-                    } 
-                }
+            $.isLogin(); 
+            layer.load();  
+            function getData(){ 
+                $.getData({
+                    type: 'get',
+                    url: '/article_list?sort_id='+categoryId,
+                    success: function (data) {
+                        var $loadingMore = $("#JS_loading_more");
+                        var $loaded = $(".JS_loaded", $loadingMore);
+                        $loaded.hide().prev().show();
+                        $list.empty();
+                        layer.closeAll('loading');
+                        $news.fadeIn();
+                        var oReturn=callBack(data);
+                        if(oReturn){
+                            $.loadMore(data.data,'article_list?sort_id='+categoryId,callBack,'mescroll');
+                        } 
+                        mescroll.endSuccess();
+                    },
+                    error:function(){
+                        layer.closeAll('loading');
+                        $news.fadeIn();
+                        mescroll.endErr();
+                    }
+                })
+            }
+            var mescroll = new MeScroll("mescroll", {
+                down: {
+					callback: function(){
+                        getData();
+                    },
+                    scrollbar:true
+				}
             })
-
             function callBack(data) {
                 var data=data.data.data;
                 var html = '';
@@ -54,7 +75,7 @@ require(["entry"], function (CONST) {
                                     <img src="'+$.getImg(el.pic_src)+'_180x180" width="100%" height="100%">\
                                 </div>\
                                 </a>\
-                            </div>'
+                            </div>' 
                 })
                 $list.append(html);
                 var $link=$list.find('.JS_info_link');

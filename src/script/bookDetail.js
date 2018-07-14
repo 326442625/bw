@@ -61,8 +61,7 @@ require(["entry"], function (CONST) {
                 type: 'get',
                 url: '/auth/check_santong',
                 isShare: true,
-                success: function (data) {
-                    console.log(data)
+                success: function (data) { 
                     if (data.code == 200) {
                         // 请求获得书本详情
                         $.getData({
@@ -484,7 +483,7 @@ require(["entry"], function (CONST) {
             })
             // 分享
             $share.click(function () {
-                $.share();
+                $.share({});
             })
 
             function shareCallBack(data) {

@@ -13,6 +13,9 @@ require(["entry"], function (CONST) {
             var $sn=$("#JS_sn");
             var $per=$("#JS_per");
             var $time=$("#JS_time");
+            var $msgContent=$("#JS_msg_content");
+            var $msg=$("#JS_msg");
+            var $send=$("#JS_send");
             var urlOrderId = $.getParam('orderId');
             // 请求获得订单详情
             $.isLogin();
@@ -31,6 +34,7 @@ require(["entry"], function (CONST) {
                 var html = '<div>';
                 var typeName = data.order.fHanddown == 0 ? '精品图书' : '普通图书';
                 var myDate='';
+                var fMemo=data.order.fMemo||'';
                 if (first) {
                     html += '<div class="bg-white">\
                                   <div class="cart-title">\
@@ -83,13 +87,15 @@ require(["entry"], function (CONST) {
                     myDate = data.order.fCheckdate || '无';
                 } else if (data.order.fCked == '0') {
                     orderStatus = '订单创建时间';
-                    myDate = data.order.fDate || '';
+                    myDate = data.order.fCreate_date || '';
                 } else if (data.order.fCked == '1') {
                     orderStatus = '订单提交时间';
                     myDate = data.order.fCkdate || '';
                 }
                 $time.prev().html(orderStatus);
                 $time.html(myDate.substring(0,19));
+                $msgContent.html(fMemo.replace(/\r\n/g,"<br>")); 
+                $msgContent.scrollTop(3000000000000);
                 isDiscount();
                 return true;
             }
@@ -110,6 +116,32 @@ require(["entry"], function (CONST) {
                     })
                 }
             }
+            // 留言
+            $send.click(function(){
+                var msg=$msg.val();
+                if(!msg){
+                    layer.msg('请输入留言的内容~');
+                    return false;
+                }
+                $.getData({
+                    type: 'post', 
+                    url: '/order/memo_add',
+                    param:{
+                        order_id:urlOrderId,
+                        content:msg
+                    },
+                    success: function (data) {
+                        if(data.data.status==1){
+                            layer.msg('发送成功!');
+                            $msg.val('');
+                            $msgContent.html(data.data.fMemo.replace(/\r\n/g,"<br>"));
+                            $msgContent.scrollTop(3000000000000);
+                        }else if(data.data.status==-1){
+                            layer.msg('发送失败!');
+                        }
+                    }
+                })
+            })
         })
     });
 });

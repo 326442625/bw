@@ -1,9 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+<head> 
     <title>订单详情</title>
     @@include('./public/head.html')
 </head>
@@ -46,15 +44,15 @@
         </div>
         <div class="message-warpper padding-12 bg-white margin-top-10">
             <span class="font-16 black">留言</span>
-            <div class="message-content bg-gray margin-top-10 margin-bottom-15">
+            <div id="JS_msg_content" class="message-content bg-gray margin-top-10 margin-bottom-15">
                 
             </div>
             <div class="clearfix">
                 <div class="question-warpper f-left">
                     <i class="icon icon-question margin-left-10 margin-right-5"></i>
-                    <input type="text" class="gray" placeholder="输入您想要留言的内容">
+                    <input id="JS_msg" type="text" class="gray" autocomplete="off" placeholder="输入您想要留言的内容">
                 </div>
-                <div class="f-right send">
+                <div id="JS_send" class="f-right send">
                     <p>
                         <i class="icon icon-send"></i>
                     </p>

@@ -19,7 +19,7 @@
                         var token = data.data.token;
                         var expiresTime = new Date().getTime() + data.data.expires_in * 1000;
                         $.setKey('bwToken', token);
-                        $.setKey('bwExpires', expiresTime);
+                        $.setKey('bwExpires', expiresTime); 
                         location.href=bwUrl;
                       }else{
                         layer.msg(data.msg);
