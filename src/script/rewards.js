@@ -11,28 +11,49 @@ require(["entry"], function (CONST) {
             var processing=[];
             var past=[];
             var notStart=[];
+            var bwHistoryData = {};
             // 请求获得活动列表
             $.isLogin();
-            $.getData({
-                type: 'get',
-                url: '/activity_list',
-                beforeGetLoading:true,
-                success: function (data) {
-                    var nowDate=new Date().getTime(); 
-                    $.each(data.data,function(index,el){ 
-                        if(el.start_time*1000>nowDate){
-                            notStart.push(el);
-                        }else if(el.start_time*1000<=nowDate&&nowDate<el.end_time*1000){
-                            processing.push(el);
-                        }else{
-                            past.push(el)
-                        }
-                    })  
-                    callBack(processing,1);
-                    callBack(past,2);
-                    callBack(notStart,3);
-                }
-            })
+            if (history.state && $.getKey('bwRewords') && history.state.back == 'back') {
+                bwHistoryData = JSON.parse($.getKey('bwRewords'));  
+                var sidebarTop = bwHistoryData.sidebarTop || 0;
+                var hisProcessing = bwHistoryData.processing ||[];
+                var hisPast = bwHistoryData.past ||[];
+                var hisNotStart = bwHistoryData.notStart || [];
+                history.replaceState({}, null, '');
+                callBack(hisProcessing,1);
+                callBack(hisPast,2);
+                callBack(hisNotStart,3);
+                console.log(sidebarTop)
+                setTimeout(function () {
+                    $(window).scrollTop(sidebarTop);
+                }, 0);
+            }else{
+                $.getData({
+                    type: 'get',
+                    url: '/activity_list',
+                    beforeGetLoading:true,
+                    success: function (data) {
+                        var nowDate=new Date().getTime(); 
+                        $.each(data.data,function(index,el){ 
+                            if(el.start_time*1000>nowDate){
+                                notStart.push(el);
+                            }else if(el.start_time*1000<=nowDate&&nowDate<el.end_time*1000){
+                                processing.push(el);
+                            }else{
+                                past.push(el)
+                            }
+                        })  
+                        callBack(processing,1);
+                        callBack(past,2);
+                        callBack(notStart,3);
+                        bwHistoryData.processing = processing;
+                        bwHistoryData.past = past;
+                        bwHistoryData.notStart = notStart;
+                        $.setKey('bwRewords', JSON.stringify(bwHistoryData));
+                    }
+                })
+            } 
             function callBack(data,type) {
                 if(type==1){
                     $dom=$ongoing;
@@ -74,7 +95,7 @@ require(["entry"], function (CONST) {
                                         <p class="act-title">'+el.title+'</p>\
                                     </div>\
                                     <div class="time">\
-                                        <p class="white font-12">活动时间：'+$.timeStamp(el.start_time*1000)+'-'+$.timeStamp(el.end_time*1000)+'</p>\
+                                        <p class="white font-12">活动时间：'+$.timeStamp(el.start_time*1000)+'至'+$.timeStamp(el.end_time*1000)+'</p>\
                                     </div>\
                                 </div>\
                                 <a href="javascript:;" class="'+showGo+' icon icon-go white font-16"><strong>GO</strong>\
@@ -87,7 +108,14 @@ require(["entry"], function (CONST) {
             $rewards.on('click','.JS_go',function(){
                 var id=$(this).attr('id');
                 var type=$(this).attr('type');
+                history.replaceState({
+                    back: 'back'
+                }, null, '');
                 location.href='/view/activity.html?id='+id+'&type='+type;
+            })
+            $(window).scroll(function () {    
+                bwHistoryData.sidebarTop = $(window).scrollTop();
+                $.setKey('bwRewords', JSON.stringify(bwHistoryData));
             })
         })
     });

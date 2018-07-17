@@ -109,7 +109,7 @@ define(["entry", "clip"], function (CONST, Clipboard) {
                 }
             });
         },
-        pop: function (param) {
+        pop: function (param) {//弹窗(el为元素,forbidScroll禁止滚动)
             var $mask = $('.w-mask');
             var $el = param.el;
             var $body=$('body');
@@ -169,7 +169,7 @@ define(["entry", "clip"], function (CONST, Clipboard) {
                 "top": mTop
             });
         },
-        isLogin: function () {
+        isLogin: function () {//判断是否登录
             var token = localStorage.getItem('bwToken');
             var expiresTime = localStorage.getItem('bwExpires');
             var curUrl = location.href;
@@ -217,7 +217,7 @@ define(["entry", "clip"], function (CONST, Clipboard) {
                 })
             }
         },
-        getPrice: function (price) {
+        getPrice: function (price) {//获取价格小数点之前和小数点之后
             var price = parseFloat(price).toFixed(2);
             var priceIndex = price.indexOf('.');
             var qPrice = price.substring(0, priceIndex);
@@ -230,11 +230,10 @@ define(["entry", "clip"], function (CONST, Clipboard) {
         getTime: function (time) {
             return time.substring(0, 10).replace(/-/g, '/');
         },
-        loadMore: function (data, url, callBack, type, invoicesType) { 
+        loadMore: function (data, url, callBack, type, invoicesType) {//加载更多
             var $loadingMore = $("#JS_loading_more");
             var loadingStart;
             loadMore(data);
-
             function loadMore(data) {
                 var pageInfo = data;
                 if (!data.last_page) {
@@ -350,7 +349,7 @@ define(["entry", "clip"], function (CONST, Clipboard) {
                 }
             })
         },
-        tab: function (param) {
+        tab: function (param) {//选项卡
             var $el = param.el;
             var aIndex = param.index || 0;
             var funs = param.funs || [];
@@ -363,7 +362,7 @@ define(["entry", "clip"], function (CONST, Clipboard) {
                 }
             })
         },
-        getLoading: function () {
+        getLoading: function () {//加载
             var html = '<div id="JS_w_loading" class="w-loading">\
                         <i class="icon icon-loading2"></i>\
                         <p class="margin-top-15">加载中...</p>\
@@ -373,7 +372,7 @@ define(["entry", "clip"], function (CONST, Clipboard) {
             }
             $("#JS_w_loading").show();
         },
-        getAllLoading: function () {
+        getAllLoading: function () {//加载
             var html = '<div id="JS_w_all_loading" class="w-loading">\
                         <i class="icon icon-loading3"></i>\
                         <p class="margin-top-15">加载中...</p>\
@@ -383,7 +382,7 @@ define(["entry", "clip"], function (CONST, Clipboard) {
             }
             $("#JS_w_all_loading").show();
         },
-        unique: function (arr) {　　
+        unique: function (arr) {//获取不重复的数组
             var res = [];　　
             var json = {};　　
             for (var i = 0; i < arr.length; i++) {　　　　
@@ -394,7 +393,7 @@ define(["entry", "clip"], function (CONST, Clipboard) {
             }　　
             return res;
         },
-        page: function myPage(param) {
+        page: function myPage(param) {//分页
             var data = param.data || {};
             var getData = param.fun;
             var par = param.par;
@@ -488,7 +487,7 @@ define(["entry", "clip"], function (CONST, Clipboard) {
                 $page.html(html);
             }
         },
-        timeStamp: function (time) {
+        timeStamp: function (time) {//时间转换
             var date = new Date(time);
             var y = date.getFullYear();
             var m = date.getMonth() + 1;
@@ -503,7 +502,7 @@ define(["entry", "clip"], function (CONST, Clipboard) {
             second = second < 10 ? ('0' + second) : second;
             return y + '-' + m + '-' + d + ' ' + h + ':' + minute + ':' + second;
         },
-        share: function (param) {
+        share: function (param) {//分享
             var $body = $('body');
             var oTop=$(window).scrollTop()||0; 
             var html = '<div id="JS_share_mask" class="w-mask2 share-mask disn">\
@@ -543,7 +542,7 @@ define(["entry", "clip"], function (CONST, Clipboard) {
             }); 
             $("#JS_share_mask").fadeIn();
         },
-        getImg:function(imgUrl){  
+        getImg:function(imgUrl){//获取上传图片的地址
             if(imgUrl.indexOf('/uploads/')==0){
                 var imgStr=String(imgUrl).replace(/\/uploads\//g,function(){return CONST.BaseImg+'/'});
                 return imgStr;
@@ -552,8 +551,7 @@ define(["entry", "clip"], function (CONST, Clipboard) {
             var imgStr2=String(imgStr).replace(/'\/uploads\//g,function(){return "'"+CONST.BaseImg+'/'});
             return imgStr2;
         },
-        refresh:function(){
-            //微信后退强制刷新
+        refresh:function(){//微信后退强制刷新(ios)
             var isPageHide = false; 
             window.addEventListener('pageshow', function () { 
               if (isPageHide) { 
@@ -571,8 +569,8 @@ define(["entry", "clip"], function (CONST, Clipboard) {
         $.setKey('bwUrl', location.href);
         location.href = wxUrl;
     }
-
-    function accAdd(arg1, arg2) {
+     
+    function accAdd(arg1, arg2) {//解决js浮点加法
         var r1, r2, m;
         try {
             r1 = arg1.toString().split(".")[1].length
@@ -592,7 +590,7 @@ define(["entry", "clip"], function (CONST, Clipboard) {
         return accAdd(arg, this);
     }
 
-    function accMul(arg1, arg2) {
+    function accMul(arg1, arg2) {//解决js浮点乘法
         var m = 0,
             s1 = arg1.toString(),
             s2 = arg2.toString();

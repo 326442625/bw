@@ -20,6 +20,9 @@ require(["entry"], function (CONST) {
             if(id=='2'){
                 $title.html('博文服务协议');
             } 
+            if(id=='14'){
+                $title.html('博文保密条款');
+            } 
             // 请求获得咨询详情
             $.isLogin();
             $.getData({
@@ -33,7 +36,7 @@ require(["entry"], function (CONST) {
                         location.href=data.data.redirect_url;
                     }
                     callBack(data.data);
-                    var html='<a href="/view/bookList.html?type=9&id='+data.data.id+'" id="JS_check" class="red-botton f-right"><i class="icon icon-banner-detail margin-right-5"></i>点击下单</a>'
+                    var html='<a href="/view/bookList.html?type=9&title='+data.data.title+'&id='+data.data.id+'" id="JS_check" class="red-botton f-right"><i class="icon icon-banner-detail margin-right-5"></i>点击下单</a>'
                     var $fix=$(".JS_fixed");
                     if(data.data.arr_book_id){
                         $fix.append(html).removeClass('text-center').prev().removeClass('text-center');

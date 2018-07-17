@@ -43,7 +43,7 @@ require(["entry"], function (CONST) {
                 var html='';
                 $.each(data,function(index,el){
                     html+='<div class="card clearfix bg-white">\
-                                <a href="/view/bookList.html?rank=1&type=8&fCode=' + el.fcode + '">\
+                                <a href="/view/bookList.html?rank=1&ftitle='+el.ftitle+'&type=8&fCode=' + el.fcode + '">\
                                     <div class="f-left">\
                                         <i class="icon icon-rank-detail"></i>\
                                     </div>\

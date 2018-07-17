@@ -5,6 +5,7 @@ require(["entry"], function (CONST) {
     require(["common", "date"], function ($) {
         $(function () {
             $.refresh();
+            // 展开收缩
             var Accordion = function (el, multiple, link) {
                 this.el = el || {};
                 this.multiple = multiple || false;
@@ -182,7 +183,7 @@ require(["entry"], function (CONST) {
                 $searchWarpper.find('input').val('');
             })
             // 搜索  
-            var $H_name = $("#JS_H_name"); //书名
+            var $H_name = $(".JS_H_name"); //书名
             var $H_isbn = $("#JS_H_isbn"); //国际码
             var $h_barcode = $("#JS_h_barcode"); //条码
             var $H_writer = $("#JS_H_writer"); //作者
@@ -191,13 +192,15 @@ require(["entry"], function (CONST) {
             var $H_newbook = $("#JS_H_newbook"); //首次到货
             var $H_qty_zero = $("#JS_H_qty_zero"); //库存图书
             var $H_Typename = $("#JS_H_Typename"); //图书分类
-            var $submit = $("#JS_submit");
+            var $submit = $("#JS_submit"); 
             $submit.click(function () {
                 var $h_type0 = $(".JS_h_type01"); //状态
-                var $h_type04 = $(".JS_h_type04"); //类型
-                if ($.trim($H_name.val())) {
-                    param.H_name = $H_name.val();
-                }
+                var $h_type04 = $(".JS_h_type04"); //类型 
+                $H_name.each(function(index,el){ 
+                    if ($.trim($(this).val())) { 
+                        param['H_name'+index]=$(this).val();
+                    }
+                })   
                 if ($.trim($H_isbn.val())) {
                     param.H_isbn = $H_isbn.val();
                 }

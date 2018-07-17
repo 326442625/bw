@@ -26,7 +26,7 @@ require(["entry"], function (CONST) {
             var isTimeStart=false;
             var listData = [];
             var bwHistoryData={}; 
-            if (history.state && $.getKey('bwBookList')&&history.state.back=='back') { 
+            if (history.state && $.getKey('bwBookList')&&history.state.back=='back') { //后退返回原来位置
                 bwHistoryData = JSON.parse($.getKey('bwBookList'));   
                 var current_page=bwHistoryData.current_page||1;
                 var last_page=bwHistoryData.last_page||1;
@@ -37,7 +37,7 @@ require(["entry"], function (CONST) {
                 var timeShow=bwHistoryData.timeShow||false;
                 var timeIndex=bwHistoryData.timeIndex;
                 var timeClass=bwHistoryData.timeClass||'';
-                var viewClass=bwHistoryData.viewClass||'';
+                var viewClass=bwHistoryData.viewClass||'single'; 
                 var saleClass=bwHistoryData.saleClass||'';
                 filterParam=bwHistoryData.filterParam||'sale=0';
                 timeParam=bwHistoryData.timeParam||{H_update_date: {}};
@@ -63,6 +63,9 @@ require(["entry"], function (CONST) {
                 if(viewClass.indexOf('single')!==-1){
                     $list.addClass('single');  
                     $view.children('i').addClass('icon-view2');
+                }else{
+                    $list.removeClass('single');  
+                    $view.children('i').removeClass('icon-view2');
                 }
                 getAllData(filterParam, timeParam ,data);
                 history.replaceState({}, null, '');
@@ -87,6 +90,7 @@ require(["entry"], function (CONST) {
                 $.getLoading();
                 getAllData(filterParam, timeParam);
             }
+            // 下拉加载
             var mescroll = new MeScroll("mescroll", {
                 down: {
 					callback: function(){
@@ -122,6 +126,7 @@ require(["entry"], function (CONST) {
                 bwHistoryData.timeShow=!$timeWarpper.is(":hidden");
                 $.setKey('bwBookList', JSON.stringify(bwHistoryData));
             })
+            // 上架时间搜索
             $timeSubmit.click(function () {
                 timeParam.H_update_date.startTime = '';
                 timeParam.H_update_date.endTime = '';
@@ -223,6 +228,14 @@ require(["entry"], function (CONST) {
                 }
                 if (type == 1) { // 普通搜索
                     var param = 'flag=simple&f[0][filter_match]=or&f[0][column]=H_isbn&f[0][operator]=contains&f[0][query_1]=' + searchVal + '&f[1][filter_match]=or&f[1][column]=h_barcode&f[1][operator]=contains&f[1][query_1]=' + searchVal + '&f[2][filter_match]=or&f[2][column]=H_writer&f[2][operator]=contains&f[2][query_1]=' + searchVal + '&f[3][filter_match]=or&f[3][column]=h_publish&f[3][operator]=contains&f[3][query_1]=' + searchVal + '&f[4][filter_match]=or&f[4][column]=H_name&f[4][operator]=contains&f[4][query_1]=' + searchVal + timeUrl;
+                    var bwHistorySearch = $.getKey('bwHistorySearch');
+                    if (!bwHistorySearch) {
+                        bwHistorySearch = [];
+                    } else {
+                        bwHistorySearch = JSON.parse($.getKey('bwHistorySearch'));
+                    }
+                    bwHistorySearch.unshift(searchVal);
+                    $.setKey('bwHistorySearch', JSON.stringify(bwHistorySearch));
                     $title.html('书单');
                     if(hisData){
                         callBack(hisData);
@@ -263,7 +276,7 @@ require(["entry"], function (CONST) {
                         }
                     })
                 } else if (type == 2) { // 高级搜索
-                    var searchData = JSON.parse(searchVal);
+                    var searchData = JSON.parse(searchVal); 
                     var i = 0;
                     var urlParam = '';
                     $title.html('书单');
@@ -271,7 +284,16 @@ require(["entry"], function (CONST) {
                         param['f[' + i + '][column]'] = key;
                         param['f[' + i + '][operator]'] = 'equal_to';
                         param['f[' + i + '][query_1]'] = value;
-                        if (key == 'H_name') {
+                        if (key == 'H_name0') {
+                            param['f[' + i + '][column]'] = 'H_name';
+                            param['f[' + i + '][operator]'] = 'contains';
+                        }
+                        if (key == 'H_name1') {
+                            param['f[' + i + '][column]'] = 'H_name';
+                            param['f[' + i + '][operator]'] = 'contains';
+                        }
+                        if (key == 'H_name2') {
+                            param['f[' + i + '][column]'] = 'H_name';
                             param['f[' + i + '][operator]'] = 'contains';
                         }
                         if (key == 'H_qty_zero') {
@@ -555,6 +577,8 @@ require(["entry"], function (CONST) {
                     })
                 } else if (type == 8) { //推荐书单
                     var fCode = $.getParam('fCode');
+                    var fTitle=$.getParam('ftitle', decodeURI(location.href));
+                    $title.html(fTitle);
                     var reqUrl = 'book_list?type=bowen_topic&bowen_topic_id=' + fCode + '&' + filterParam + timeUrl;
                     if(hisData){
                         callBack(hisData);
@@ -596,6 +620,8 @@ require(["entry"], function (CONST) {
                     })
                 }  else if (type == 9) { //咨询书单
                     var id = $.getParam('id');
+                    var title=$.getParam('title', decodeURI(location.href));
+                    $title.html(title);
                     var reqUrl = 'book_list?type=article&article_id=' + id + '&' + filterParam + timeUrl;
                     if(hisData){
                         callBack(hisData);
@@ -662,10 +688,10 @@ require(["entry"], function (CONST) {
                     var bookId = el.H_id;
                     var iconMark = el.marketing_policy ? '' : 'no-show';
                     var publishDate = el.H_publish_date ? el.H_publish_date : '';
-                    var writer = el.H_writer ? el.H_writer : '--';
+                    var writer = el.H_writer ? el.H_writer : '--'; 
                     var discount1 = el.discount_1 ? el.discount_1 : '110';
                     var discount2 = el.discount_2 ? el.discount_2 : '110';
-                    var discount1Class=el.discount_2 ? '' : 'right-12';
+                    var discount1Class=el.discount_2? '' : 'right-12';
                     var hStock = el.STOCK ? el.STOCK : '-1';
                     var saleqty = el.h_saleqty ? el.h_saleqty : 0;
                     var rankClass = 'disn';
@@ -853,10 +879,10 @@ require(["entry"], function (CONST) {
                     e.stopPropagation();
                     var bookId = $(this).attr('bookId');
                     var stock = parseFloat($(this).parents('.book-warpper').find(".JS_stock").data('stock'));
-                    if (stock == 0) {
-                        layer.msg('库存不足~');
-                        return false;
-                    }
+                    // if (stock == 0) {
+                    //     layer.msg('库存不足~');
+                    //     return false;
+                    // }
                     $.getData({
                         type: 'put',
                         url: '/cart',
@@ -877,7 +903,7 @@ require(["entry"], function (CONST) {
                     $img.removeClass('fadeIn');
                     $detail.removeClass('ts-3');
                     $(this).children('i').toggleClass('icon-view2');
-                    $list.toggleClass('single'); 
+                    $list.toggleClass('single');  
                     bwHistoryData.viewClass=$list.attr('class');
                     $.setKey('bwBookList', JSON.stringify(bwHistoryData));
                 })

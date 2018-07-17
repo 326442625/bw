@@ -242,5 +242,5 @@ input[type=search]::-webkit-search-cancel-button{-webkit-appearance: none;/*æ­¤å
 .share-mask{opacity: 0.7;filter: alpha(opacity=70);}
 .share-mask .share-info{position: absolute;top: 1.706665rem;left: .682666rem;}
 .share-mask .icon-share{position: absolute;top: .170667rem;right: .4096rem;} 
-.share-warpper{opacity: 0.9;filter: alpha(opacity=90);position: fixed;bottom: .2048rem;right: .2048rem;width:1.023999rem;height: 1.023999rem;border-radius: 50%;background: #f6df7e;text-align: center;} 
+.share-warpper{opacity: 0.9;filter: alpha(opacity=90);position: fixed;bottom: .2048rem;left: .2048rem;width:1.023999rem;height: 1.023999rem;border-radius: 50%;background: #f6df7e;text-align: center;} 
 

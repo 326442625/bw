@@ -12,20 +12,20 @@ require(["entry"], function (CONST) {
             var $right = $("#JS_right");
             var listData = [];
             var bwHistoryData = {}; 
-            if (history.state && $.getKey('bwCategory')&&location.href.indexOf('backGet')!==-1) {
+            if (history.state && $.getKey('bwCategory') && history.state.back == 'back') { //后退返回原来位置不请求
                 bwHistoryData = JSON.parse($.getKey('bwCategory'));
                 listData = bwHistoryData.listData;
                 sidebarTop = bwHistoryData.sidebarTop || 0;
                 rightTop = bwHistoryData.rightTop || 0;
                 historyIndex = bwHistoryData.index || 0;
                 $category.show();
-                callback();
+                callback(); 
+                history.replaceState({}, null, '');
                 setTimeout(function () {
                     $(".JS_item").eq(historyIndex).trigger('click');
                     $sidebar.scrollTop(sidebarTop);
                     $right.scrollTop(rightTop);
                 }, 0);
-                history.replaceState({}, null, '#');
             } else {
                 // 请求获得分类信息
                 $.isLogin();
@@ -52,6 +52,7 @@ require(["entry"], function (CONST) {
                 $nav.html(html);
                 $(".JS_item").eq(0).trigger('click');
             }
+            // 获取子分类
             $nav.on('click', '.JS_item', function () {
                 var index = $(this).index();
                 var Gtype_Code = $(this).data('code');
@@ -91,8 +92,10 @@ require(["entry"], function (CONST) {
                 var typeCode = $(this).attr('code');
                 var param = {
                     H_type: typeCode
-                }
-                history.replaceState({}, null, '#backGet');
+                } 
+                history.replaceState({
+                    back: 'back'
+                }, null, '');
                 location.href = "/view/bookList.html?type=2&searchVal=" + JSON.stringify(param);
             })
         })

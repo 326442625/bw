@@ -55,6 +55,7 @@ require(["entry"], function (CONST) {
                          return false;
                        }
                        $add.addClass('fadeIn').data('add',true);
+                       $code.empty();
                        new QRCode($code.get(0), {
                         text: CONST.BaseUrl+'/view/bindCallBack.html?qrCode='+qr_code,
                         width: 200,
@@ -66,6 +67,7 @@ require(["entry"], function (CONST) {
                     }
                 })
             }
+            // 添加子账号
             $add.click(function () {
                 if(!$(this).data('add')){
                     layer.msg('您的子账号绑定已全部绑定完成');
@@ -75,6 +77,7 @@ require(["entry"], function (CONST) {
                     location.href="/view/account.html";
                 }});
             })
+            // 删除子账号
             $list.on('click','.JS_del',function(){
                 var _this=$(this);
                 var id=_this.data('id');
@@ -88,8 +91,7 @@ require(["entry"], function (CONST) {
                            sub_user_id:id
                         },
                         success:function(data){
-                           layer.msg(data.msg);
-                           $code.empty();
+                           layer.msg(data.msg); 
                            getCode();
                            _this.parents('.account-info').hide();
                            $binded.html(parseInt($binded.html())-1);

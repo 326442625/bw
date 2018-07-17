@@ -30,9 +30,18 @@ require(["entry"], function (CONST) {
                             fun();
                         }
                         var data = data.data;
+                        if(data.length==0){
+                            var html = '<div class="empty-status text-center">\
+                                            <img src="/images/empty-order.png">\
+                                            <p class="gray">已经没有修改的订单~</p>\
+                                        </div>';
+                            $order.html(html);
+                            return false;
+                        }
                         getTimes++;
                         callBack(sn, data, type, dom);
                         count();
+                        
                     }
                 })
             }

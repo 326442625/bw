@@ -14,7 +14,7 @@ require(["entry"], function (CONST) {
             var $userName = $("#JS_user_name");
             var $shopAmount = $("#JS_shop_amount");
             var $pop = $("#JS_pop");
-            var $userImg=$("#JS_user_img")
+            var $userImg = $("#JS_user_img")
             var urlId = $.getParam('id');
             var urlType = $.getParam('type');
             $.isLogin();
@@ -37,62 +37,64 @@ require(["entry"], function (CONST) {
                     }
                 })
             }
-            $.getData({
+            $.getData({//请求获取我的信息
                 type: 'get',
                 url: '/me',
-                async:false,
-                success: function (data) { 
-                    $userImg.attr('src',data.data.profile.avatar);
-                    $userImg.data('id',data.data.user_info.id);
-                    $userImg.data('name',data.data.user_info.name); 
-                }
-            })
-            $.getData({ //请求获取我的红包
-                type: 'get',
-                url: '/activity_user_rank?activity_id=' + urlId,
+                async: false,
                 success: function (data) {
-                    if (data.data.length > 0) {
-                        $check.show();
-                        $userName.html($userImg.data('name'));
-                        $shopName.html(data.data[0].santong_user_title);
-                        var html = '';
-                        $.each(data.data, function (index, el) {
-                            if(el.user_id==0){
-                                el.user_title='PC下单';
-                                el.user_avatar='/images/icon-tx.png'
-                            }else if(el.user_id==parseInt($userImg.data('id'))){
-                                $shopAmount.html(el.hb_je);
-                            } 
-                            var rankHtml = '<span>' + index + '</span>';
-                            switch (index) {
-                                case 0:
-                                    rankHtml = '<i class="icon icon-first2"></i>';
-                                    break;
-                                case 1:
-                                    rankHtml = '<i class="icon icon-second2"></i>';
-                                    break;
-                                case 2:
-                                    rankHtml = '<i class="icon icon-third2"></i>';
-                                    break;
+                    $userImg.attr('src', data.data.profile.avatar);
+                    $userImg.data('id', data.data.user_info.id);
+                    $userImg.data('name', data.data.user_info.name);
+                    $.getData({ //请求获取我的红包
+                        type: 'get',
+                        async: false,
+                        url: '/activity_user_rank?activity_id=' + urlId,
+                        success: function (data) {
+                            if (data.data.length > 0) {
+                                $check.show();
+                                $userName.html($userImg.data('name'));
+                                $shopName.html(data.data[0].santong_user_title);
+                                var html = '';
+                                $.each(data.data, function (index, el) {
+                                    if (el.user_id == 0) {
+                                        el.user_title = 'PC下单';
+                                        el.user_avatar = '/images/icon-tx.png'
+                                    } else if (el.user_id == parseInt($userImg.data('id'))) {
+                                        $shopAmount.html(el.hb_je);
+                                    }
+                                    var rankHtml = '<span>' + index + '</span>';
+                                    switch (index) {
+                                        case 0:
+                                            rankHtml = '<i class="icon icon-first2"></i>';
+                                            break;
+                                        case 1:
+                                            rankHtml = '<i class="icon icon-second2"></i>';
+                                            break;
+                                        case 2:
+                                            rankHtml = '<i class="icon icon-third2"></i>';
+                                            break;
+                                    }
+                                    html += '<li class="clearfix">\
+                                            <div class="f-left ranking">\
+                                                ' + rankHtml + '\
+                                            </div>\
+                                            <div class="f-left">\
+                                                <img src="' + el.user_avatar + '">\
+                                            </div>\
+                                            <div class="f-left margin-top-5 margin-left-5">\
+                                                <p class="font-16 text-over user-title">' + el.user_title + '</p>\
+                                                <p class="font-13 black-9">' + el.order_num + '单；' + el.my_je + '码洋</p>\
+                                            </div>\
+                                            <div class="f-right amount">\
+                                                <p class="red"><strong>' + el.hb_je + '元</strong></p>\
+                                            </div>\
+                                        </li>'
+                                })
+                                $redList.append(html);
                             }
-                            html += '<li class="clearfix">\
-                                    <div class="f-left ranking">\
-                                        ' + rankHtml + '\
-                                    </div>\
-                                    <div class="f-left">\
-                                        <img src="'+el.user_avatar+'">\
-                                    </div>\
-                                    <div class="f-left margin-top-5 margin-left-5">\
-                                        <p class="font-16">' + el.user_title + '</p>\
-                                        <p class="font-13 black-9">' + el.order_num + '单；' + el.my_je + '码洋</p>\
-                                    </div>\
-                                    <div class="f-right amount">\
-                                        <p class="red"><strong>' + el.hb_je + '元</strong></p>\
-                                    </div>\
-                                </li>'
-                        })
-                        $redList.append(html);
-                    }
+                        }
+                    })
+
                 }
             })
 
@@ -110,9 +112,9 @@ require(["entry"], function (CONST) {
                                 <i class="icon icon-act-border"></i>\
                             情</h2>\
                             <p class="margin-top-25 margin-bottom-10 black-7">活动时间：</p>\
-                            <p class="gray black-9">' + $.timeStamp(data.start_time * 1000) + '-' + $.timeStamp(data.end_time * 1000) + '</p>\
+                            <p class="gray black-9">' + $.timeStamp(data.start_time * 1000) + '至' + $.timeStamp(data.end_time * 1000) + '</p>\
                             <p class="margin-top-15 margin-bottom-10 black-7">活动细则：</p>\
-                            <div>' + $.getImg(data.content) + '</div>\
+                            <div class="content-warpper">' + $.getImg(data.content) + '</div>\
                             <i class="icon icon-act-end ' + iconStatus + '"></i>\
                         </div>'
                 $detail.html(html);
@@ -157,10 +159,11 @@ require(["entry"], function (CONST) {
                 })
                 $list.append(html);
             }
-
+            // 弹窗
             $check.click(function () {
                 $.pop({
-                    el: $pop
+                    el: $pop,
+                    forbidScroll:true
                 });
             })
         })

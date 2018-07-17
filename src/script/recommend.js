@@ -54,7 +54,7 @@ require(["entry"], function (CONST) {
         }
         $.each(data, function (index, el) {
           html += '<div class="card">\
-                     <a href="/view/bookList.html?type=8&fCode=' + el.fcode + '">\
+                     <a href="/view/bookList.html?type=8&ftitle='+el.ftitle+'&fCode=' + el.fcode + '">\
                         <i class="icon icon-recommend"></i>\
                         <p>\
                             <span class="font-16 margin-right-5">' + el.ftitle + '</span>\

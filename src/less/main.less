@@ -720,8 +720,8 @@ a.dec{
         vertical-align: top;
     }
     &.icon-marketing{
-        width: .853333rem;
-        height: .221866rem; 
+        width: .921599rem;
+        height: .256rem; 
         background: url('/images/icon-marketing.png') no-repeat;
         background-size: 100% 100%; 
         vertical-align: middle;
@@ -863,7 +863,8 @@ a.dec{
         }
         .name-warpper{
             text-align: center;
-            width: 2.406398rem;
+            width: 1.406398rem;
+            padding:0 .5rem;
             height: .597333rem;
             line-height:.546133rem;
             margin:0 auto;
@@ -871,7 +872,7 @@ a.dec{
             background-size: 100% 100%;
             position: relative;
             bottom: .2048rem;
-        }
+        } 
         p{
             font-weight: 600;
         }
@@ -886,6 +887,9 @@ a.dec{
             padding: 0 .085333rem .085333rem .085333rem;
             height: 3.754663rem;
             overflow: auto;
+            .user-title{
+                width: 2.218665rem;
+            }
             .title{
                 text-align: center;
                 font-weight: 600;
@@ -1570,20 +1574,17 @@ a.dec{
       .warpper{
           padding: .085333rem .2048rem 0 .2048rem;
       }
-      li{
-          width: 28%;
-          height: 3.549864rem;
-          margin-right: .3072rem;
+      li{ 
+          height: 3.549864rem; 
+          padding:0 .136533rem;
           margin-top: .256rem;
-          &:nth-child(3n){
-            margin-right: 0;
-          }
+          .border-box(); 
           img{
-              width: 1.791998rem;
+              width: 100%;
               height: 2.389331rem;
           }
           .book-name{
-            max-height: .614399rem;
+            max-height: .648533rem;
             line-height: .341333rem;
             .text-over-2();
           }
@@ -1669,7 +1670,7 @@ a.dec{
             min-height:.580266rem;
             max-height:.580266rem;
             .text-over-2();
-        }
+        }  
         .detail{
             display: block;
             position: absolute;
@@ -1755,6 +1756,7 @@ a.dec{
                 right: .853333rem;
                 &.right-12{
                     right: .2048rem;
+                    margin-right: 0;
                 }
             }
             .coupon-2{
@@ -1774,8 +1776,8 @@ a.dec{
                 }
                 a{
                     position: absolute;
-                    right: .341333rem;
-                    bottom: .20rem;
+                    right: .2048rem;
+                    bottom: .2rem;
                 }
             }
             .detail{
@@ -2915,6 +2917,10 @@ a.dec{
     left: 0;
     right: 0;
     background: #fff;
+    .icon-login-no-checked{
+        position: relative;
+        top: .0512rem;
+    }
     .login-title{
         height: 1.706665rem;
         line-height:1.706665rem;

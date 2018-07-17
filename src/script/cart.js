@@ -15,7 +15,7 @@ require(["entry"], function (CONST) {
             var $have=$("#JS_have");
             var $totalWarpper = $("#JS_total_warpper");
             $.isLogin();
-            $.refresh();
+            $.refresh();//后退强制刷新(ios)
             $.getData({
                 type: 'get',
                 url: '/cart',
@@ -243,6 +243,7 @@ require(["entry"], function (CONST) {
             // 计算价格
             function count() {
                 var aTotalPrice = 0;
+                var $checkedCount = $(".cart-inner input[type=checkbox]:checked");
                 // 精品图书
                 var $qualityCheck = $('.quality').find('.cart-inner input:checked');
                 var $qualityKind = $('.quality').find('.JS_kind');
@@ -301,8 +302,8 @@ require(["entry"], function (CONST) {
                 $ordinaryRealPrice.html('¥<span class="font-18">' + $.getPrice(ordinaryRealPrice.toFixed(2)).qPrice + '</span>' + $.getPrice(ordinaryRealPrice.toFixed(2)).hPrice + '</span>');
                 aTotalPrice = qualityRealPrice.add(ordinaryRealPrice);
                 $qTotal.html($.getPrice(aTotalPrice.toFixed(2)).qPrice);
-                $hTotal.html($.getPrice(aTotalPrice.toFixed(2)).hPrice);
-                aTotalPrice !== 0?$submit.removeClass('opacity-6'):$submit.addClass('opacity-6');
+                $hTotal.html($.getPrice(aTotalPrice.toFixed(2)).hPrice); 
+                $checkedCount.length!==0?$submit.removeClass('opacity-6'):$submit.addClass('opacity-6');
             }
             // 减少
             $cart.on('click', '.decrease', function () {

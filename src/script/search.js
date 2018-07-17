@@ -8,29 +8,38 @@ require(["entry"], function (CONST) {
             var $search = $("#JS_search");
             var $history = $("#JS_history");
             var $scan = $("#JS_scan");
+            var $hot=$("#JS_hot")
             $advancedSearch.click(function () {
                 location.href = "/view/advancedSearch.html"
             })
             // 搜索
             $search.keypress(function (e) {
                 var keycode = e.keyCode;
-                var searchVal = $(this).val();
-                var bwHistory = $.getKey('bwHistory');
-                if (!bwHistory) {
-                    bwHistory = [];
-                } else {
-                    bwHistory = JSON.parse($.getKey('bwHistory'));
-                }
+                var searchVal = $(this).val();  
                 if (keycode == '13') {
-                    e.preventDefault();
-                    bwHistory.unshift(searchVal);
-                    $.setKey('bwHistory', JSON.stringify(bwHistory));
+                    e.preventDefault(); 
                     location.href = "/view/bookList.html?type=1&searchVal=" + searchVal;
                 }
             });
+            // 热门搜索
+            $.getData({
+                type: 'get',
+                url: '/config/xm_config',
+                success: function (data) { 
+                    var keyword=String(data.data.hot_keyword_arr).split(",");
+                    hotCallBack(keyword);
+                }
+            })
+            function hotCallBack(data){  
+                var html='';
+                $.each(data,function(index,el){
+                    html+= '<a href="/view/bookList.html?type=1&searchVal='+el+'" class="red">'+el+'</a>'
+                })
+                $hot.html(html);
+            }
             // 历史搜索
             var historyHtml = '';
-            var historyData = JSON.parse($.getKey('bwHistory')) || [];
+            var historyData = JSON.parse($.getKey('bwHistorySearch')) || [];
             historyData.forEach(function (el, index) {
                 if (index < 3) {
                     historyHtml += '<p><a class="black-5" href="/view/bookList.html?type=1&searchVal=' + el + '">' + el + '</a></p>';
@@ -55,8 +64,7 @@ require(["entry"], function (CONST) {
                     jsApiList: data.jsApiList // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
                 });
                 wx.ready(function () {
-                    document.querySelector('#JS_scan').onclick = function () {
-                  
+                    document.querySelector('#JS_scan').onclick = function () { 
                         wx.scanQRCode({
                             desc: 'scanQRCode desc',
                             needResult: 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，

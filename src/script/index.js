@@ -17,15 +17,26 @@ require(["entry"], function (CONST) {
             var $change = $("#JS_change");
             var $notice = $("#JS_notice");
             var $rank = $(".JS_rank"); 
+            var $rankWarpper=$("#JS_rank_warpper");
+            var $title=$("title");
             // 请求获得首页信息
             $.isLogin();
+            // 获取首页标题
+            $.getData({
+                type: 'get',
+                url: '/config/xm_config',
+                success: function (data) {  
+                    $title.html(data.data.title);
+                }
+            })
+            // 获取首页信息
             $.getData({
                 type: 'get',
                 url: '/home',
                 beforeLoading: {
                     el: $home
                 },
-                success: function (data) { 
+                success: function (data) {   
                      // 扫一扫
                      $.getData({
                         type: 'post',
@@ -58,6 +69,9 @@ require(["entry"], function (CONST) {
                     callBackRank(data.data.rank_bowen_quanguo, $nationRank, 'd-blue', 1);
                     callBackRank(data.data.rank_bowen_publish_hot, $publishRank, 'l-blue', 2);
                     callBackRank(data.data.rank_new_book_sub, $subscriptionBook, 'p-blue', 3);
+                    if(data.data.rank_bowen_quanguo.length==0&&data.data.rank_bowen_publish_hot.length==0&&data.data.rank_new_book_sub.length==0){
+                        $rankWarpper.hide();
+                    }
                     callBackList(data.data.hot_book, $hotList);
                     callBackList(data.data.fine_book, $fineList);
                     callBackRec();
@@ -214,7 +228,7 @@ require(["entry"], function (CONST) {
                 var html = '';
                 $.each(data, function (index, el) {
                     var bookAuthor = el.H_writer ? el.H_writer : '---';
-                    html += '<li class="f-left JS_detail">\
+                    html += '<li class="f-left JS_detail w-col-8">\
                               <a href="/view/bookDetail.html?bookId=' + el.H_id + '">\
                                 <p class="text-center"><img src="' + CONST.BaseBookImg + '/' + el.H_images + '_210x280" height="100%"></p>\
                                 <p class="book-name margin-top-4">' + el.H_name + '</p>\
@@ -260,6 +274,7 @@ require(["entry"], function (CONST) {
                         type: 'get',
                         before: function () {
                             $loading2.show();
+                            $empty.hide();
                             $list.hide();
                         },
                         url: '/list_of_books/santong?' + param + 'limit=3',
@@ -283,7 +298,7 @@ require(["entry"], function (CONST) {
                             return false;
                         }
                         html += '<div class="card">\
-                                   <a href="/view/bookList.html?type=8&fCode=' + el.fcode + '">\
+                                   <a href="/view/bookList.html?type=8&ftitle='+el.ftitle+'&fCode=' + el.fcode + '">\
                                       <i class="icon icon-recommend"></i>\
                                       <p>\
                                           <span class="font-16 margin-right-5">' + el.ftitle + '</span>\
@@ -294,8 +309,7 @@ require(["entry"], function (CONST) {
                     html += '<p class="margin-top-15 text-center">\
                             <a href="/view/recommend.html" class="gray">查看更多</a>\
                           </p>'
-                    $list.html(html);
-                    $empty.hide();
+                    $list.html(html); 
                     $list.fadeIn();
                 }
                 $drap.click(function (e) {

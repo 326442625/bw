@@ -55,7 +55,7 @@ require(["entry"], function (CONST) {
             var mBookData = {};
             var mImgUrl = 'https://bwst.weilaba.com.cn/images/bw.jpg';
             var mBookName = '书单详情';
-            // 分享判断
+            // 分享判断(是否是三通id)
             $.isLogin();
             $.getData({
                 type: 'get',
@@ -82,6 +82,7 @@ require(["entry"], function (CONST) {
                             }
                         })
                     }else{
+                        // 跳转到分享的书单详情
                         location.href="/view/shareBookDetail.html?bookId="+urlBookId;
                     }
                 }
@@ -159,12 +160,12 @@ require(["entry"], function (CONST) {
                     $bookCname.html(bookData.h_type02);
                 }
                 if (bookData.STOCK) {
-                    $bookKc.html(parseInt(bookData.STOCK))
+                    $bookKc.html(parseInt(parseFloat(bookData.STOCK)))
                 }
                 data.favorite ? $attention.removeClass('no-heart') : $attention.addClass('no-heart');
                 data.favorite ? $attentionInfo.html('已关注') : $attentionInfo.html('关注');
                 $attention.data('isAtte', data.favorite);
-                stock = parseInt(bookData.STOCK);
+                stock = parseInt(parseFloat(bookData.STOCK));
                 if (parseInt(data.cart_num) > 99) {
                     $cartNum.addClass('more').html('99+');
                 } else {

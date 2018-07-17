@@ -9,7 +9,7 @@
               if(bwUrl.indexOf('loginCallBack.html')!==-1){
                 bwUrl="/";
               }
-              $.getData({
+              $.getData({//请求登录
                   url:CONST.LoginUrl,
                   param: {
                       code: wxCode

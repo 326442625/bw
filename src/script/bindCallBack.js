@@ -6,7 +6,7 @@
         $(function () {
             var urlCode=$.getParam('qrCode');
             $.isLogin();
-            $.getData({
+            $.getData({//请求绑定子账号
                 type: 'post',
                 url: '/bind/bind_sub_account',
                 param:{qr_code:urlCode},
