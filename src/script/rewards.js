@@ -23,8 +23,7 @@ require(["entry"], function (CONST) {
                 history.replaceState({}, null, '');
                 callBack(hisProcessing,1);
                 callBack(hisPast,2);
-                callBack(hisNotStart,3);
-                console.log(sidebarTop)
+                callBack(hisNotStart,3); 
                 setTimeout(function () {
                     $(window).scrollTop(sidebarTop);
                 }, 0);

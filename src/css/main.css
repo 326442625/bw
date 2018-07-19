@@ -1667,6 +1667,9 @@ a.dec {
 #book-list .book-warpper:nth-child(2n) {
   float: right;
 }
+#book-list .book-warpper .serial_number {
+  text-indent: -0.068267rem;
+}
 #book-list .book-warpper .img-warpper {
   height: 2.986664rem;
 }
@@ -2146,6 +2149,9 @@ a.dec {
   margin-top: .136533rem;
   margin-bottom: .3072rem;
   text-align: center;
+}
+#activity .warpper .order-time span:nth-child(2n) {
+  margin-right: .341333rem;
 }
 #activity .warpper .detail {
   position: relative;
@@ -3066,4 +3072,40 @@ a.dec {
   width: .341333rem;
   height: .341333rem;
   vertical-align: middle;
+}
+#book-list .sbook-list {
+  margin-top: 0;
+  padding: 0 .2048rem;
+}
+#book-list .sbook-list .book-warpper {
+  border: 1px solid #f3f3f3;
+  padding: .2048rem;
+  height: 2.269865rem;
+}
+#book-list .sbook-list .book-warpper .desc {
+  width: 65%;
+}
+#book-list .sbook-list .book-warpper .remove-btn {
+  padding: 0 .136533rem;
+  height: .341333rem;
+  line-height: .341333rem;
+  border-radius: .034133rem;
+  font-size: .187733rem;
+}
+#book-list .sbook-list .book-warpper .sku {
+  margin-top: .1024rem;
+}
+#book-list .sbook-list .book-warpper .sku .coupon {
+  position: relative;
+  bottom: .0512rem;
+  left: 0;
+  right: 0;
+  margin-left: .085333rem;
+}
+#book-list .sbook-list .img-warpper {
+  width: 1.706665rem;
+  height: 1.706665rem;
+}
+#book-list .sbook-list .img-warpper img {
+  height: 1.706665rem;
 }

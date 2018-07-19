@@ -3,7 +3,7 @@
  */
 
 //config info
-//必须加上后缀.js，打包时用到，打包后自动去掉后缀
+//必须加上后缀.js，打包时用到，打包后自动去掉后缀(打包的js必须有两个一个是min.js一个是.js)
 require.config({
     paths: {
         jquery: "/libs/jquery/dist/jquery.js",
@@ -27,7 +27,7 @@ require.config({
 
 //CONST
 define(function () {
-    return {
+    return {//配置基础的信息(本地和生产区别的配置)
         BaseApiUrl: "#BaseApiUrl#", //不能修改字符串，地址需到gulp.config.js里配置
         BaseUrl: "#BaseUrl#",
         BaseAppId:"#BaseAppId#",

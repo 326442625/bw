@@ -33,7 +33,7 @@ module.exports = function(){
         BaseBookImgDev:"https://bwst-cdn2.weilaba.com.cn/netbook/Bookimages",
         BaseLoginUrlDist:"/auth/login_wx",
         BaseLoginUrlTest:"/auth/login_wx",
-        BaseLoginUrlDev:"/auth/login_wx",
+        BaseLoginUrlDev:"/auth/login_wx_mock",
         src : {
             img : path.src + path.images + "/**/*.*",
             css : [
@@ -43,6 +43,7 @@ module.exports = function(){
                 path.src+path.libs+"/swiper/dist/css/swiper.css",
                 path.src+path.libs+"/date/date.min.css",
                 path.src+path.libs+"/pdf/jquery.touchPDF.css",
+                path.src+path.libs+"/mescroll/mescroll.min.css",
             ],
             script : [
                 path.src + path.script + "/**/*.js"

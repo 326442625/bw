@@ -28,9 +28,8 @@ require(["entry"], function (CONST) {
             var $share = $("#JS_share_book");
             var urlBookId = $.getParam('bookId');
             var mImgUrl = 'https://bwst.weilaba.com.cn/images/bw.jpg';
-            var mBookName = '书单详情';
-            // 请求获得书本详情
-            $.isLogin();
+            var mBookName = '书单详情'; 
+            // 请求获得书本详情 
             $.getData({
                 type: 'get',
                 beforeLoading: {

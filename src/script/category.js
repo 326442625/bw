@@ -35,11 +35,14 @@ require(["entry"], function (CONST) {
                     beforeLoading: {
                         el: $category
                     },
-                    success: function (data) {
-                        listData = data.data.bw.children;
-                        callback();
-                        bwHistoryData.listData = listData;
-                        $.setKey('bwCategory', JSON.stringify(bwHistoryData));
+                    success: function (data) {  
+                        $.each(data.data,function(index,el){   
+                            listData = data.data[index].children; 
+                            callback();
+                            bwHistoryData.listData = listData;
+                            $.setKey('bwCategory', JSON.stringify(bwHistoryData));
+                            return false;
+                        }) 
                     }
                 })
             }

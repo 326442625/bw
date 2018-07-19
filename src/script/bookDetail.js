@@ -161,6 +161,8 @@ require(["entry"], function (CONST) {
                 }
                 if (bookData.STOCK) {
                     $bookKc.html(parseInt(parseFloat(bookData.STOCK)))
+                }else{
+                    $bookKc.parent().hide();
                 }
                 data.favorite ? $attention.removeClass('no-heart') : $attention.addClass('no-heart');
                 data.favorite ? $attentionInfo.html('已关注') : $attentionInfo.html('关注');

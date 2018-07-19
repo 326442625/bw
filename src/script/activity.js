@@ -3,7 +3,7 @@
  */
 require(["entry"], function (CONST) {
     require(["common"], function ($) {
-        $(function () {
+        $(function () { 
             var $activity = $("#activity");
             var $detail = $("#JS_detail");
             var $list = $("#list");
@@ -100,7 +100,8 @@ require(["entry"], function (CONST) {
 
             function callBackActivity(data) {
                 var iconStatus = urlType == '2' ? '' : 'disn';
-                var html = '';
+                var time_segment_data=data.time_segment_data;
+                var html = ''; 
                 html += ' <p class="text-center font-20 black">' + data.title + '</p>\
                         <p class="time gray font-11">发布时间：' + $.timeStamp(data.add_time * 1000) + '</p>\
                         <div class="detail">\
@@ -113,11 +114,23 @@ require(["entry"], function (CONST) {
                             情</h2>\
                             <p class="margin-top-25 margin-bottom-10 black-7">活动时间：</p>\
                             <p class="gray black-9">' + $.timeStamp(data.start_time * 1000) + '至' + $.timeStamp(data.end_time * 1000) + '</p>\
+                            <div id="JS_time_segment_data" class="clearfix order-time">\
+                              <p class="margin-top-15 margin-bottom-10 black-7">活动下单时间：</p>\
+                            </div>\
                             <p class="margin-top-15 margin-bottom-10 black-7">活动细则：</p>\
                             <div class="content-warpper">' + $.getImg(data.content) + '</div>\
                             <i class="icon icon-act-end ' + iconStatus + '"></i>\
                         </div>'
-                $detail.html(html);
+                $detail.html(html); 
+                var $timeSegmentData=$("#JS_time_segment_data"); 
+                time_segment_data=JSON.parse(time_segment_data);  
+                if(time_segment_data==null){
+                    $timeSegmentData.hide();
+                }else{
+                    $.each(time_segment_data,function(index,el){  
+                        $timeSegmentData.append('<span class="gray f-left black-9">'+el.from_hour_str+'至'+el.to_hour_str+'</span>');   
+                    }) 
+                }
             }
 
             function callBackWinner(data) {

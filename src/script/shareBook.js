@@ -12,7 +12,7 @@ require(["entry"], function (CONST) {
             var $com = $("#JS_com");
             var $del = $("#JS_del")
             var $list = $("#JS_list");
-            // 请求获取我的书单列表
+            // 请求获取我的书单列表 
             $.isLogin();
             $.getData({
                 type: 'get',
